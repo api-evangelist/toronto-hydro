@@ -1,0 +1,292 @@
+aid: toronto-hydro
+name: Toronto Hydro
+review:
+  question: Does Toronto Hydro expose a public, documented, self-serve API surface,
+    and is Ontario's Green Button mandate actually implemented here?
+  answer: partial
+  date: '2026-07-27'
+  reviewer: API Evangelist
+  summary: |
+    Toronto Hydro has NO developer portal, NO published API base URI, NO OpenAPI
+    or any other machine-readable contract, and NO self-serve keys. What it does
+    have is a real, live, mandated Green Button implementation — Download My Data
+    behind the customer login and Connect My Data behind a third-party onboarding
+    portal operated by its platform vendor. The mandate produced an implementation;
+    it did not produce a developer product. Every consumer-data path is gated, and
+    no grid or market data is published openly at all.
+
+mandate:
+  regime: green-button-ontario
+  status: live-implemented
+  instrument: >-
+    O. Reg. 633/21 (Energy Data) under the Electricity Act, 1998 (Ontario). Requires
+    rate-regulated electricity and natural gas utilities in Ontario to implement
+    Green Button Download My Data (DMD) and Connect My Data (CMD), certified by the
+    Green Button Alliance, by 1 November 2023.
+  jurisdiction: Ontario, Canada (province-level; there is no Canadian national equivalent)
+  regulator: Ontario Energy Board (OEB) / Ontario Ministry of Energy
+  applies_to_this_organization: true
+  applies_because: >-
+    Toronto Hydro is a rate-regulated electricity local distribution company (LDC)
+    serving the City of Toronto, squarely inside the class of utilities O. Reg.
+    633/21 binds. It is not one of the small no-smart-metering entities exempted.
+  what_i_verified:
+    - >-
+      https://www.torontohydro.com/for-home/green-button — HTTP 200 (reached via a
+      302 from https://www.torontohydro.com/green-button). A live Green Button
+      landing page describing BOTH Download My Data and Connect My Data, naming
+      Green Button Alliance / Ontario Ministry of Energy marks.
+    - >-
+      https://www.torontohydro.com/my-account/green-button-data — HTTP 200 but
+      redirects to the Liferay login portlet (/log-in?...redirect=/my-account/green-button-data).
+      A real Download My Data surface exists; it is customer-account gated.
+    - >-
+      https://www.torontohydro.com/my-account/green-button-connections — HTTP 200,
+      same login redirect. A real Connect My Data authorization-management surface
+      exists; customer-account gated.
+    - >-
+      https://torontoonboarding.savagedata.com/ — HTTP 200. A live third-party
+      registration application ("3rdPartyRegistration", Blazor Server / Radzen),
+      linked directly from Toronto Hydro's public Green Button page. Confirmed to be
+      a genuinely routed application, not a static shell: the root document and an
+      invented path (/bogus-xyz-123) return DIFFERENT bodies (md5 719f7569... vs
+      4eb6bd34...).
+    - >-
+      https://www.torontohydro.com/green-button/third-party-terms — HTTP 200.
+      Published "Third Party Terms and Conditions for Green Button Connect My Data",
+      citing O. Reg 633/21 under the Electricity Act, 1998, and binding third
+      parties to Toronto Hydro's CMD terms.
+    - >-
+      https://www.torontohydro.com/documents/d/guest/green-button-connect-my-data-customer-guide
+      — HTTP 200, 799 KB PDF (created 2024-10-21). Text extracted from the PDF
+      streams documents the live authorization flow verbatim - the third party sends
+      the customer an email link or redirects them from its app/web page to
+      "Toronto Hydro's authentication page", where the customer either signs in with
+      their Toronto Hydro online account (Option A) or, if unregistered, is prompted
+      with "an alternative method to provide consent" (Option B), before being
+      redirected to the authorization page. This is an OAuth-style redirect-and-consent
+      flow, consistent with ESPI.
+  what_i_could_NOT_verify:
+    - >-
+      No Green Button Alliance certificate naming Toronto Hydro specifically was
+      found. The GBA press release
+      https://www.greenbuttonalliance.org/news/green-button-alliance-announces-55-ontario-based-utilities-platforms-are-now-green-button-certified
+      (fetched) announces 55 Ontario utility platforms certified to NAESB REQ.21
+      ESPI v3.3 as of 2 November 2023 but names no utilities except London Hydro
+      (quoted) and Enbridge Gas (sponsor). https://www.greenbuttonalliance.org/certified
+      and /certified-products both returned HTTP 404.
+    - >-
+      No public ESPI base URI is published by Toronto Hydro anywhere I probed. A
+      host discovered by DNS guessing, torontodc.savagedata.com (resolves 135.84.136.4,
+      HTTP 200, Microsoft-IIS/10.0, serves a Savage Data "GreenPortal" Blazor SPA),
+      is NOT linked from any Toronto Hydro page and CANNOT be treated as evidence -
+      the root, /DataCustodian/espi/1_1/resource/ and an invented path all return
+      byte-identical HTML (md5 7c277674...), i.e. a static SPA catch-all, not an API.
+      It is recorded here as an unconfirmed probe, not as Toronto Hydro's endpoint.
+    - >-
+      No OAuth or OpenID Connect discovery document is served. Both
+      https://www.torontohydro.com/.well-known/openid-configuration (HTTP 404) and
+      https://torontoonboarding.savagedata.com/.well-known/openid-configuration
+      (HTTP 200 but returns the Blazor index.html, i.e. an SPA fallback, not JSON)
+      were fetched anonymously.
+  honest_reading: >-
+    Ontario is the replicability test case for energy data mandates, and Toronto
+    Hydro passes the implementation half of it - the obligation is real, dated, and
+    the operational machinery (customer DMD, customer CMD consent management, a
+    third-party onboarding portal, published third-party terms, a documented
+    authorization flow) is demonstrably live. It fails the developer half completely.
+    A mandate here produced a compliance surface, not an API product. Nothing about
+    this implementation is discoverable, documented, or callable by a developer who
+    has not first signed a contract.
+
+data_standard:
+  name: Green Button — NAESB REQ.21 Energy Services Provider Interface (ESPI) v3.3
+  confirmed_at_organization_level: false
+  note: >-
+    Toronto Hydro's own pages say "the Green Button standard's CMD functionality"
+    and reference O. Reg 633/21 but never state an ESPI version number. ESPI v3.3
+    is the version the Ontario regulation and the Green Button Alliance's Ontario
+    certification announcement both specify, and Toronto Hydro's platform vendor
+    Savage Data Systems is documented as the first Ontario solution certified to
+    NAESB ESPI v3.3 for DMD and CMD. The version is therefore attributed to the
+    regime and the vendor, not to a Toronto Hydro statement.
+  proprietary_shapes: none published
+
+consumer_vs_market_data:
+  consumer_data_api: true
+  consumer_data_detail: >-
+    A third party CAN obtain an individual customer's electricity usage, billing and
+    account data from Toronto Hydro through Green Button Connect My Data, over a
+    standardized (ESPI) interface, with the customer's explicit consent captured on
+    a Toronto Hydro authentication/authorization page. This is a real consumer data
+    API. It is simply invisible to anyone who has not been onboarded - no base URI,
+    no reference docs, no sandbox, no keys.
+  market_data_open: false
+  market_data_detail: >-
+    Toronto Hydro publishes NO open grid, system or market data API. It is a wires
+    company, not a market operator - Ontario's wholesale market data belongs to IESO,
+    a separate organization. The only public real-time-ish surface is a web outage
+    map at https://outagemap.torontohydro.com/ (HTTP 200, text/html), which is a
+    rendered map, not a documented feed. https://www.torontohydro.com/data,
+    /for-business/open-data and /developers all returned HTTP 404. Business
+    consumption reporting (EWRB) is delivered either through the ENERGY STAR
+    Portfolio Manager data-exchange service or, failing that, by emailing a PDF
+    request form to contactus@torontohydro.com with a four-week turnaround
+    (https://www.torontohydro.com/for-business/reporting-of-energy-consumption).
+  the_split: >-
+    Completely closed on market data, mandated-but-gated on consumer data. Toronto
+    Hydro is the inverse of an ISO/RTO - the only data it opens is the data a
+    regulator forced it to open, and even that opens only to counterparties who sign.
+
+access:
+  gate: application-approval
+  what_a_developer_must_actually_do:
+    - >-
+      For Connect My Data - submit an online application through the third-party
+      onboarding portal at https://torontoonboarding.savagedata.com/, complete a
+      connectivity test, and comply with the Third Party Terms and Conditions for
+      Green Button Connect My Data at
+      https://www.torontohydro.com/green-button/third-party-terms. Toronto Hydro's
+      page states "Additional information will be provided in the third-party portal"
+      - the technical details are behind the application.
+    - >-
+      For Download My Data - be a Toronto Hydro customer, log in at
+      https://www.torontohydro.com/my-account/green-button-data, and download the
+      Green Button file yourself. This is customer-account-required, not developer
+      access.
+  self_serve_signup: false
+  sandbox_published: false
+  pricing_published: false
+  time_to_first_call: unknown — no published SLA, timeline, or fee schedule for
+    third-party onboarding
+
+auth:
+  model: >-
+    OAuth-style redirect authorization consistent with Green Button/ESPI CMD - the
+    third party redirects the customer to a Toronto Hydro authentication page, the
+    customer authenticates against their Toronto Hydro online account (or uses an
+    alternate consent path if they have no account), and grants ongoing data
+    delivery. Client credentials are issued to third parties only after approval.
+  documented_publicly: false
+  scopes_published: false
+  oidc_discovery: not served (see mandate.what_i_could_NOT_verify)
+  evidence: >-
+    Green Button Connect My Data Customer Guide PDF (2024-10-21), extracted text
+    describing Option A/Option B authentication and redirect to "the appropriate
+    authorization page".
+
+home_market: Canada (Ontario — City of Toronto service territory)
+tier: utility-retailer
+ownership: >-
+  Toronto Hydro Corporation is wholly owned by the City of Toronto; Toronto Hydro-Electric
+  System Limited is the rate-regulated distributor. Municipally owned, not investor-owned,
+  and not a provincial Crown corporation.
+platform_vendor: >-
+  Savage Data Systems (https://www.savagedata.com/) — inferred from the onboarding
+  host torontoonboarding.savagedata.com linked from Toronto Hydro's Green Button page.
+  Savage Data's Data Custodian is documented as the first Ontario solution certified
+  by the Green Button Alliance for DMD and CMD at NAESB ESPI v3.3.
+
+probes:
+  - url: https://www.torontohydro.com/
+    status: 200
+  - url: https://torontohydro.com/
+    status: 200
+    note: redirects to https://www.torontohydro.com/
+  - url: https://developer.torontohydro.com/
+    status: 000
+    note: DNS does not resolve
+  - url: https://developers.torontohydro.com/
+    status: 000
+    note: DNS does not resolve
+  - url: https://api.torontohydro.com/
+    status: 000
+    note: DNS does not resolve
+  - url: https://docs.torontohydro.com/
+    status: 000
+    note: DNS does not resolve
+  - url: https://data.torontohydro.com/
+    status: 000
+    note: DNS does not resolve
+  - url: https://www.torontohydro.com/openapi.json
+    status: 404
+  - url: https://www.torontohydro.com/swagger.json
+    status: 404
+  - url: https://www.torontohydro.com/.well-known/openid-configuration
+    status: 404
+  - url: https://www.torontohydro.com/developers
+    status: 404
+  - url: https://www.torontohydro.com/api
+    status: 404
+  - url: https://www.torontohydro.com/data
+    status: 404
+  - url: https://www.torontohydro.com/for-business/open-data
+    status: 404
+  - url: https://www.torontohydro.com/green-button
+    status: 200
+    note: redirects to /for-home/green-button
+  - url: https://www.torontohydro.com/for-home/green-button
+    status: 200
+  - url: https://www.torontohydro.com/green-button/third-party-terms
+    status: 200
+  - url: https://www.torontohydro.com/my-account/green-button-data
+    status: 200
+    note: redirects to Liferay login
+  - url: https://www.torontohydro.com/my-account/green-button-connections
+    status: 200
+    note: redirects to Liferay login
+  - url: https://www.torontohydro.com/documents/d/guest/green-button-connect-my-data-customer-guide
+    status: 200
+    note: 799 KB PDF, 4 pages
+  - url: https://torontoonboarding.savagedata.com/
+    status: 200
+    note: live third-party registration app, routed (not a static shell)
+  - url: https://torontoonboarding.savagedata.com/openapi.json
+    status: 404
+  - url: https://torontoonboarding.savagedata.com/.well-known/openid-configuration
+    status: 200
+    note: returns Blazor index.html, NOT an OIDC JSON document — SPA fallback
+  - url: https://torontodc.savagedata.com/
+    status: 200
+    note: DNS-guessed host, not linked from Toronto Hydro; static SPA catch-all, all
+      paths byte-identical; NOT accepted as evidence
+  - url: https://torontocmd.savagedata.com/
+    status: 000
+    note: DNS does not resolve
+  - url: https://outagemap.torontohydro.com/
+    status: 200
+    note: rendered outage web map, no documented data feed
+  - url: https://www.torontohydro.com/robots.txt
+    status: 200
+  - url: https://www.torontohydro.com/sitemap.xml
+    status: 200
+    note: Liferay sitemap index; no api/developer/data/green-button URLs surfaced in
+      the index
+  - url: https://github.com/torontohydro
+    status: 404
+  - url: https://ca.linkedin.com/company/toronto-hydro
+    status: 200
+
+artifacts_harvested:
+  openapi: 0
+  asyncapi: 0
+  postman: 0
+  graphql: 0
+  note: No machine-readable API contract of any kind is published by Toronto Hydro
+    or by its Green Button platform vendor at any public URL probed.
+
+sources:
+  - url: https://www.torontohydro.com/for-home/green-button
+    type: Documentation
+  - url: https://www.torontohydro.com/green-button/third-party-terms
+    type: TermsOfService
+  - url: https://www.torontohydro.com/documents/d/guest/green-button-connect-my-data-customer-guide
+    type: GettingStarted
+  - url: https://torontoonboarding.savagedata.com/
+    type: DeveloperPortal
+  - url: https://www.torontohydro.com/for-business/reporting-of-energy-consumption
+    type: Documentation
+  - url: https://www.greenbuttonalliance.org/news/green-button-alliance-announces-55-ontario-based-utilities-platforms-are-now-green-button-certified
+    type: Reference
+  - url: https://greenbuttonontario.ca/
+    type: Reference

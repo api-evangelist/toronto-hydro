@@ -1,0 +1,100 @@
+# Toronto Hydro (toronto-hydro)
+
+Toronto Hydro is the municipally owned local electricity distribution company (LDC) for the City of Toronto, delivering power to roughly 800,000 residential and business customers across Canada's largest city. It sits in the wires-and-meters layer of Ontario's electricity value chain — it does not generate power and it does not run the wholesale market (that is IESO) — so the only customer-facing data it owns is smart-meter consumption, billing and account data. Its API posture is a clean example of a mandate that produced an implementation but not a developer product: Ontario's O. Reg. 633/21 under the Electricity Act, 1998 compelled rate-regulated electricity and gas utilities to offer Green Button Download My Data and Connect My Data conforming to NAESB REQ.21 ESPI v3.3 by 1 November 2023, and Toronto Hydro runs both — customer-facing Download My Data and Connect My Data pages behind its account login, a published third-party terms-and-conditions document, and a live third-party onboarding portal operated by its platform vendor Savage Data Systems. But there is no developer.torontohydro.com, no docs. or api. subdomain, no published base URI, no OpenAPI, and no self-serve keys. Consumer data is available only to companies that apply, pass a connectivity test and sign the third-party terms; market and grid data are not published openly at all. Mandated, implemented, and completely gated.
+
+**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/toronto-hydro/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/toronto-hydro/refs/heads/main/apis.yml)
+
+## Tags
+
+- Energy
+- Canada
+- Utilities
+- Electricity
+- Smart Metering
+- Green Button
+- Grid
+- Ontario
+- Consumer Data
+- Electricity Distribution
+
+## Timestamps
+
+- **Created:** 2026-07-27
+- **Modified:** 2026-07-27
+
+## APIs
+
+### Toronto Hydro Green Button Connect My Data
+
+Toronto Hydro's Green Button Connect My Data (CMD) implementation, required of rate-regulated Ontario electricity utilities by O. Reg. 633/21 and built to the NAESB REQ.21 Energy Services Provider Interface (ESPI) v3.3 standard. A registered and approved third party receives a redirect to a Toronto Hydro authentication page where the customer signs in to their Toronto Hydro online account (or uses an alternate consent method if they have no online account) and authorizes ongoing machine-to-machine delivery of their electricity usage, billing and account data. Toronto Hydro publishes no base URI, no API reference and no machine-readable contract for this API — the resource shapes come from the ESPI standard rather than from the utility. Access is application-approval only, via the third-party onboarding portal operated by platform vendor Savage Data Systems, and requires a connectivity test plus acceptance of Toronto Hydro's Third Party Terms and Conditions for Green Button Connect My Data.
+
+- **Human URL:** [https://www.torontohydro.com/for-home/green-button](https://www.torontohydro.com/for-home/green-button)
+- **Base URL:** not published
+
+#### Tags
+
+- Green Button
+- Connect My Data
+- ESPI
+- Energy Usage
+- Consumer Data
+- Consent
+
+#### Properties
+
+- [Documentation](https://www.torontohydro.com/for-home/green-button)
+- [Developer Portal](https://torontoonboarding.savagedata.com/)
+- [Terms of Service](https://www.torontohydro.com/green-button/third-party-terms)
+- [Getting Started](https://www.torontohydro.com/documents/d/guest/green-button-connect-my-data-customer-guide)
+- [Login](https://www.torontohydro.com/my-account/green-button-connections)
+
+### Toronto Hydro Green Button Download My Data
+
+Toronto Hydro's Green Button Download My Data (DMD) implementation, also required by O. Reg. 633/21 and built to NAESB REQ.21 ESPI v3.3. A Toronto Hydro customer signs in to their own account and downloads their electricity consumption, billing and customer data as a standards-conformant Green Button (ESPI XML) file they can hand to any tool they choose. This is a customer-account-gated self-service export rather than a programmatic API — there is no anonymous endpoint, no key, and no documented URL pattern — but the file it emits is a real, standardized, machine-readable energy-data artifact, which is what makes DMD the practical integration path for anyone not willing to complete third-party onboarding for CMD.
+
+- **Human URL:** [https://www.torontohydro.com/for-home/green-button](https://www.torontohydro.com/for-home/green-button)
+- **Base URL:** not published
+
+#### Tags
+
+- Green Button
+- Download My Data
+- ESPI
+- Energy Usage
+- Consumer Data
+
+#### Properties
+
+- [Documentation](https://www.torontohydro.com/for-home/green-button)
+- [Login](https://www.torontohydro.com/my-account/green-button-data)
+
+## Common Properties
+
+- [Website](https://www.torontohydro.com/)
+- [Documentation](https://www.torontohydro.com/for-home/green-button)
+- [Developer Portal](https://torontoonboarding.savagedata.com/)
+- [Terms of Service](https://www.torontohydro.com/green-button/third-party-terms)
+- [Privacy Policy](https://www.torontohydro.com/privacy-policy)
+- [Support](https://www.torontohydro.com/contact-us)
+- [FAQ](https://www.torontohydro.com/frequently-asked-questions)
+- [Blog](https://www.torontohydro.com/newsroom)
+- [LinkedIn](https://ca.linkedin.com/company/toronto-hydro)
+
+## Mandate Posture
+
+| Field | Value |
+| --- | --- |
+| Mandate regime | `green-button-ontario` (O. Reg. 633/21 under the Electricity Act, 1998) |
+| Mandate status | `live-implemented` — verified live DMD, CMD and third-party onboarding surfaces |
+| Data standard | Green Button / NAESB REQ.21 ESPI v3.3 (version attributed to the regime and platform vendor, not stated by Toronto Hydro) |
+| Consumer data API | Yes — Green Button Connect My Data, consent-gated |
+| Open market data | No — no grid, system or market data API; that layer belongs to IESO |
+| Access gate | `application-approval` — online application, connectivity test, third-party terms |
+| Auth model | OAuth-style redirect + customer consent at a Toronto Hydro authentication page; credentials issued after approval |
+| Machine-readable contracts | None published (0 OpenAPI, 0 AsyncAPI, 0 collections) |
+
+See [review.yml](review.yml) for every URL probed, its HTTP status, and exactly what was and was not verified.
+
+## Maintainers
+
+- Kin Lane — kin@apievangelist.com
