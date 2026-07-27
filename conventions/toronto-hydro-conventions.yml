@@ -1,0 +1,173 @@
+generated: '2026-07-27'
+method: derived
+source: >-
+  openapi/toronto-hydro-green-button-espi-openapi.yml, plus Toronto Hydro's Green Button
+  page, Third Party Terms and Conditions for Green Button Connect My Data, and the Green
+  Button Connect My Data Customer Guide (PDF)
+provenance_note: >-
+  Toronto Hydro documents no request/response conventions of its own — no API reference, no
+  header table, no pagination note, no rate-limit document. Everything in the transport,
+  pagination, filtering and error sections below is derived from the Green Button Alliance
+  ESPI specification harvested into this repo, which is the family contract Toronto Hydro's
+  mandated surface belongs to, NOT a Toronto Hydro document. Treat it as the shape to
+  expect, not as a published Toronto Hydro commitment. The access, consent and fair-use
+  sections ARE sourced from Toronto Hydro's own published documents and are marked as such.
+authentication:
+  style: oauth2
+  flows: [authorizationCode, clientCredentials]
+  consent_model: >-
+    Customer-granted and revocable, sourced from Toronto Hydro's Customer Guide and Third
+    Party Terms. The third party initiates: it emails the customer a link or redirects them
+    from its own application to Toronto Hydro's authentication page. The customer signs in
+    with their Toronto Hydro online account (Option A) or, if they have no online account,
+    is offered an alternative method to provide consent (Option B), then reaches the
+    authorization page. The customer manages and removes connections from
+    https://www.torontohydro.com/my-account/green-button-connections and may revoke at any
+    time at their sole discretion. Only customers with an active account status may share
+    data — Connect My Data stops on or after the date an account is closed, including the
+    final billing period.
+  token_endpoint_published: false
+  authorization_endpoint_published: false
+  endpoints_note: >-
+    The endpoints in the harvested spec belong to the Green Button Alliance sandbox.
+    Toronto Hydro's own authentication, authorization and token endpoints are not published
+    anywhere and were not observed.
+  detail: authentication/toronto-hydro-authentication.yml
+  scopes: scopes/toronto-hydro-scopes.yml
+  scopes_note: The spec's scopes object is empty and Toronto Hydro publishes no scope reference.
+media_types:
+  request: null
+  response: application/atom+xml
+  note: >-
+    ESPI is Atom-wrapped XML, not JSON. Responses are AtomFeed documents whose entries carry
+    the ESPI payload under the http://naesb.org/espi namespace. Clients built for JSON APIs
+    need an XML/Atom path. The Download My Data export a customer pulls from the portal is
+    the same ESPI XML family.
+pagination:
+  style: atom-index
+  supported: true
+  params:
+  - name: start-index
+    in: query
+    type: integer
+    note: Index of the first result, 1-indexed
+  - name: max-results
+    in: query
+    type: integer
+    note: Maximum number of results to return
+  response_fields:
+  - AtomFeed entries
+  - AtomLink rel values
+  note: Applied to every collection operation in the specification.
+filtering:
+  supported: true
+  params:
+  - name: published-min
+    in: query
+    note: Minimum publication date, RFC 3339 instant
+  - name: published-max
+    in: query
+    note: Maximum publication date, RFC 3339 instant
+  - name: updated-min
+    in: query
+    note: Minimum update date, RFC 3339 instant
+  - name: updated-max
+    in: query
+    note: Maximum update date, RFC 3339 instant
+field_expansion:
+  supported: true
+  mechanism: depth
+  note: >-
+    A `depth` query parameter controls response depth on every operation. The spec documents
+    it only as "Response depth control" and gives no value range; nothing was invented here.
+sparse_fieldsets:
+  supported: false
+metadata:
+  supported: false
+  note: No customer-defined metadata surface. ESPI resources are utility-owned records.
+idempotency:
+  supported: false
+  header: null
+  note: >-
+    No Idempotency-Key header or parameter is declared anywhere in the specification and
+    none is documented by Toronto Hydro. Every operation in the contract is a GET, so the
+    read surface is naturally idempotent, but there is no idempotency-key contract for
+    writes. No `Idempotency` pointer is wired in apis.yml — emitting one would claim a
+    guarantee this provider has not made.
+request_tracing:
+  request_id_header: null
+  supported: false
+  note: No correlation or request-id header is documented.
+versioning:
+  style: uri-path
+  evidence: paths carry the /espi/1_1/resource/ segment
+  detail: lifecycle/toronto-hydro-lifecycle.yml
+error_envelope:
+  format: none
+  note: >-
+    400 and 403 are declared with a description only — no schema, no content object, no
+    application/problem+json. See errors/toronto-hydro-problem-types.yml.
+  detail: errors/toronto-hydro-problem-types.yml
+async_and_bulk:
+  supported: true
+  note: >-
+    202 Accepted is declared on every operation and is load-bearing on downloadBulkData
+    (/espi/1_1/resource/Batch/Bulk/{bulkId}), where bulk transfer is asynchronous. A client
+    must treat 202 as a normal outcome and poll rather than fail.
+rate_limiting:
+  documented: false
+  headers: []
+  note: >-
+    No rate limits, quotas, throttling behaviour or retry guidance are published by Toronto
+    Hydro or declared in the specification. What exists instead is a contractual fair-use
+    clause in the Third Party Terms: a third party may not use the service in a way that
+    burdens Toronto Hydro's infrastructure "to an unreasonable and disproportionate extent",
+    reduces the speed of the programs that make up the service, or otherwise interferes with
+    its normal functioning or abuses or overuses it. That is a discretionary legal limit
+    enforced by termination, not a documented technical one — an integrator cannot compute a
+    safe request rate from anything Toronto Hydro publishes.
+data_scope:
+  data_classes: >-
+    Consumption details, billing information and customer information — Toronto Hydro's own
+    wording on the Green Button page for Download My Data, and the Third Party Terms
+    describe Connect My Data as delivering "metering data, billing data, or other account
+    information" of consenting customers.
+  purpose_limitation: >-
+    The Third Party Terms bind the data to "the express purpose of presenting opportunities
+    to those customers of any solutions that may optimize their energy usage, reduce
+    consumption, or otherwise reduce energy costs". Other uses are outside the grant.
+  interval_and_history: >-
+    Not published by Toronto Hydro. The Ontario regulation frames interval data at hourly or
+    finer, but Toronto Hydro states no interval length, no history window and no data
+    latency for either Green Button surface. The one third-party observation on record is a
+    2019 community tool's README noting that usage data lagged two to three days.
+    Recorded as unpublished rather than assumed.
+access_gate:
+  gate: application-approval
+  source: >-
+    https://www.torontohydro.com/for-home/green-button and
+    https://www.torontohydro.com/green-button/third-party-terms
+  steps:
+  - Submit an online application through the third-party portal at https://torontoonboarding.savagedata.com/
+  - Complete Toronto Hydro's connectivity test (criteria not published)
+  - Accept the Third Party Terms and Conditions for Green Button Connect My Data, which incorporate
+    Toronto Hydro's Conditions of Service and Privacy Policy
+  - Carry Workman's Compensation, Commercial General Liability, Professional Liability and Property
+    Damage insurance, provide certificates on request naming Toronto Hydro as an additional insured
+    with a waiver of subrogation, and give thirty days written notice of cancellation
+  - Keep the application profile accurate and up to date for the life of the integration
+  - Obtain per-customer authorization, initiated from inside the third-party application
+  note: >-
+    Connection details are issued only after approval — Toronto Hydro states "Additional
+    information will be provided in the third-party portal". There is no self-serve signup,
+    no sandbox, no API key form, no trial and no published pricing or timeline. Toronto
+    Hydro also states it cannot provide customers with a list of participating third
+    parties, so discovery runs in the other direction: the customer must already know the
+    third party.
+cross_links:
+  authentication: authentication/toronto-hydro-authentication.yml
+  scopes: scopes/toronto-hydro-scopes.yml
+  errors: errors/toronto-hydro-problem-types.yml
+  lifecycle: lifecycle/toronto-hydro-lifecycle.yml
+  conformance: conformance/toronto-hydro-conformance.yml
+  data_model: data-model/toronto-hydro-data-model.yml

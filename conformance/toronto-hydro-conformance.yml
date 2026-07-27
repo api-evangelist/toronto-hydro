@@ -1,0 +1,189 @@
+generated: '2026-07-27'
+method: derived
+source: >-
+  openapi/toronto-hydro-green-button-espi-openapi.yml, apis.yml, review.yml, the Toronto
+  Hydro Green Button page, the Third Party Terms and Conditions for Green Button Connect
+  My Data, and the Green Button Connect My Data Customer Guide (PDF)
+scope_note: >-
+  Two different things are asserted below and they must not be conflated. Standards marked
+  scope: mandate are what Ontario Regulation 633/21 compels Toronto Hydro to do —
+  compelled, implemented in visible form, and NOT independently verifiable from outside,
+  because no base URI, no reference, no scope list and no anonymously served discovery
+  document exists and the Green Button Alliance publishes no public certified-products
+  register. Standards marked scope: spec are derived from the harvested Green Button
+  Alliance OpenAPI in this repo, which is the family contract and NOT Toronto Hydro's own
+  document. Nothing here is recorded as verified against a live Toronto Hydro API
+  response, because no such response could be obtained without completing onboarding.
+standards:
+- id: naesb-req21-espi-3.3
+  name: NAESB REQ.21 Energy Services Provider Interface (Green Button) v3.3
+  scope: mandate
+  conforms: claimed-unverified
+  evidence: >-
+    Compelled by Ontario Regulation 633/21 (Energy Data) under the Electricity Act, 1998
+    for rate-regulated Ontario electricity and gas utilities by 1 November 2023. Toronto
+    Hydro-Electric System Limited is the rate-regulated distributor for the City of
+    Toronto with roughly 800,000 customers and full smart metering; no small-entity
+    exemption applies. Toronto Hydro's own pages name Green Button, the Green Button
+    Alliance and the Ontario Ministry of Energy marks, and its Third Party Terms define
+    Green Button as the standardized format "as implemented by utilities in accordance
+    with O.Reg 633/21", but never state an ESPI version number.
+  verification_gap: >-
+    No ESPI base URI, no API reference, no scope list, no first-party specification and no
+    conformant response were obtained. ESPI v3.3 is attributed to the regulation and to
+    the platform vendor, not to a Toronto Hydro statement. Recorded as claimed, not
+    conformant.
+- id: green-button-connect-my-data
+  name: Green Button Connect My Data
+  scope: mandate
+  conforms: claimed-unverified
+  evidence: >-
+    Toronto Hydro publishes a Green Button page describing CMD, a customer-facing
+    connection-management surface at
+    https://www.torontohydro.com/my-account/green-button-connections (HTTP 200, redirects
+    to the account login), a published Third Party Terms and Conditions document, a
+    four-page Customer Guide PDF documenting the authorization flow, and a live
+    third-party registration application at https://torontoonboarding.savagedata.com/
+    (HTTP 200, confirmed routed rather than a static shell on 2026-07-27).
+- id: green-button-download-my-data
+  name: Green Button Download My Data
+  scope: mandate
+  conforms: true
+  evidence: >-
+    Live and separately documented: a signed-in customer downloads consumption details,
+    billing information and customer information as a standards-conformant Green Button
+    file from https://www.torontohydro.com/my-account/green-button-data. It is a
+    credentialed self-service export, not a programmatic API, which is why it carries no
+    baseURL in apis.yml. A community Python tool published in 2019
+    (pypi.org/project/toronto-hydro-green-button) automates exactly this download and
+    states that no programmatic API access is offered.
+- id: green-button-alliance-certification
+  name: Green Button Alliance certification
+  scope: mandate
+  conforms: claimed-unverified
+  evidence: >-
+    The GBA announced on 2 November 2023 that 55 Ontario utility platforms had been
+    certified to NAESB REQ.21 ESPI v3.3. That announcement is an aggregate count and names
+    no utility except London Hydro (quoted) and Enbridge Gas (sponsor). No public GBA
+    certified-products register naming Toronto Hydro was found —
+    greenbuttonalliance.org/certified and /certified-products both return HTTP 404.
+- id: oauth2
+  name: OAuth 2.0
+  scope: spec
+  conforms: true
+  evidence: >-
+    The harvested spec declares a single oauth2 securityScheme with authorizationCode and
+    clientCredentials flows, applied globally. Toronto Hydro's Customer Guide describes
+    the matching redirect-and-consent shape: the third party emails a link or redirects
+    the customer to Toronto Hydro's authentication page, the customer signs in (Option A)
+    or uses an alternate consent method (Option B), then reaches the authorization page.
+    Concrete Toronto Hydro authorization and token endpoints are not published and were
+    not observed.
+- id: oauth2-scopes-published
+  name: Published OAuth scope reference
+  scope: spec
+  conforms: false
+  evidence: >-
+    The scopes object in the source document is empty and Toronto Hydro publishes no scope
+    or permissions reference.
+- id: oidc-discovery
+  name: OpenID Connect Discovery / RFC 8414 authorization-server metadata
+  scope: mandate
+  conforms: false
+  evidence: >-
+    No anonymously served discovery document exists on any Toronto Hydro or Savage Data
+    host. https://www.torontohydro.com/.well-known/openid-configuration returns 404; the
+    200s on torontoonboarding.savagedata.com are Blazor SPA shells control-tested against
+    an invented path. See well-known/toronto-hydro-well-known.yml.
+- id: atom-rfc4287
+  name: Atom Syndication Format (RFC 4287)
+  scope: spec
+  conforms: true
+  evidence: >-
+    Every 200 and 202 response in the spec is application/atom+xml, and the components
+    carry AtomFeed, AtomEntry, AtomContent and AtomLink schemas. ESPI is an Atom-wrapped
+    XML contract, not JSON.
+- id: rfc9457-problem-details
+  name: RFC 9457 Problem Details for HTTP APIs
+  scope: spec
+  conforms: false
+  evidence: >-
+    400 and 403 responses carry a description only, with no content object and no
+    application/problem+json media type.
+- id: rfc3339-timestamps
+  name: RFC 3339 timestamps
+  scope: spec
+  conforms: true
+  evidence: >-
+    published-min, published-max, updated-min and updated-max query parameters are
+    documented as RFC 3339 instants on every collection operation.
+- id: pagination
+  name: Documented pagination
+  scope: spec
+  conforms: true
+  evidence: start-index (1-indexed) and max-results query parameters on every collection operation.
+- id: idempotency
+  name: Idempotency keys
+  scope: spec
+  conforms: false
+  evidence: >-
+    No Idempotency-Key header or parameter is declared and none is documented. Every
+    operation in the spec is a GET, so the read surface is naturally idempotent, but there
+    is no idempotency contract. No Idempotency pointer is wired in apis.yml.
+- id: rate-limit-headers
+  name: Documented rate limiting
+  scope: mandate
+  conforms: false
+  evidence: >-
+    No rate-limit document, header convention or quota is published. The Third Party Terms
+    substitute a fair-use clause: a third party may not use the service in a way that
+    burdens Toronto Hydro's infrastructure "to an unreasonable and disproportionate
+    extent", reduces the speed of the programs, or otherwise interferes with normal
+    functioning — a discretionary legal limit rather than a documented technical one.
+- id: connectivity-test
+  name: Vendor connectivity test as a conformance gate
+  scope: mandate
+  conforms: true
+  evidence: >-
+    Toronto Hydro's Green Button page states that a third party must "submit an online
+    application, complete a connectivity test and comply with Toronto Hydro's Third-Party
+    Terms and Conditions". The test is real and is the only conformance checkpoint the
+    utility publishes — its criteria are not published.
+- id: openadr
+  name: OpenADR
+  conforms: false
+  evidence: No reference found on any Toronto Hydro surface.
+- id: ieee-2030.5
+  name: IEEE 2030.5 (Smart Energy Profile 2.0)
+  conforms: false
+  evidence: No reference found.
+- id: iec-cim-61968
+  name: IEC CIM 61968 / 61970
+  conforms: false
+  evidence: No reference found.
+- id: ocpp-ocpi
+  name: OCPP / OCPI
+  conforms: false
+  evidence: No reference found; Toronto Hydro publishes no EV charging API surface.
+- id: cdr-consumer-data-right
+  name: Consumer Data Right (CDS) energy standards
+  conforms: false
+  evidence: Not applicable — Canada has no consumer data right in energy. Ontario legislated Green Button instead.
+- id: energy-star-portfolio-manager
+  name: ENERGY STAR Portfolio Manager data exchange
+  scope: mandate
+  conforms: partial
+  evidence: >-
+    Toronto Hydro's business energy and water reporting page routes Energy and Water
+    Reporting and Benchmarking (EWRB) customers to the ENERGY STAR Portfolio Manager
+    data-exchange service, and otherwise to an emailed PDF request form with a four-week
+    turnaround. Recorded as a real machine-to-machine path that Toronto Hydro participates
+    in but does not document as its own API.
+compliance_program_published: false
+compliance_note: >-
+  No Compliance pointer is wired in apis.yml. Toronto Hydro publishes no trust centre, no
+  named certification (SOC 2, ISO 27001, PCI DSS) and no compliance page —
+  /security, /trust, /compliance, /responsible-disclosure and /vulnerability-disclosure all
+  return HTTP 404, and the probe-security-programs pass returned vdp=none trust=none. Its
+  only compliance claim is the regulatory one above, which is recorded as
+  claimed-unverified rather than published.

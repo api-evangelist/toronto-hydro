@@ -1,0 +1,19 @@
+generated: '2026-07-27'
+method: generated
+source: openapi/toronto-hydro-green-button-espi-openapi.yml
+note: >-
+  Every operationId referenced below was verified verbatim against the specification in this
+  repo. That specification is authored by the Green Button Alliance, not by Toronto Hydro —
+  the skills say so explicitly and instruct an agent never to guess a Toronto Hydro base
+  URI, because none is published. Toronto Hydro publishes no skills, AGENTS.md or agent
+  guidance of its own; a search of its site and of GitHub found no Toronto Hydro
+  organization at all.
+skills:
+- file: toronto-hydro-green-button-onboarding.md
+  name: Onboard as a Toronto Hydro Green Button third party
+  api: openapi/toronto-hydro-green-button-espi-openapi.yml
+  operations: [findApplicationInformations, getApplicationInformation]
+- file: toronto-hydro-green-button-retrieve-usage.md
+  name: Retrieve a customer's Green Button usage data from Toronto Hydro
+  api: openapi/toronto-hydro-green-button-espi-openapi.yml
+  operations: [findAuthorizations, getAuthorization, findUsagePoints, getUsagePoint, downloadBulkData]

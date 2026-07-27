@@ -1,0 +1,117 @@
+generated: '2026-07-27'
+method: searched
+source: >-
+  npm registry search API, PyPI JSON API, RubyGems API, GitHub REST API (orgs and
+  repository search), plus Toronto Hydro's own Green Button pages
+summary: >-
+  Toronto Hydro publishes NO first-party client libraries in any public package registry
+  and has no GitHub organization at all — both https://api.github.com/orgs/torontohydro
+  and /orgs/toronto-hydro return HTTP 404. That is consistent with the rest of its
+  posture: a mandated Green Button surface whose base URI, reference and credentials are
+  handed out only after a private onboarding process. No `SDKs` pointer is wired in
+  apis.yml because there is no first-party SDK to point at. What does exist is a small
+  community tooling layer built by Toronto Hydro customers against the customer portal —
+  recorded below as ecosystem context, never as Toronto Hydro software.
+packages: []
+first_party_found: false
+searched_registries:
+- registry: npm
+  queries: [toronto hydro, torontohydro, greenbutton, espi green button]
+  first_party_hits: 0
+  note: torontohydro returns zero results; the other queries return unrelated packages
+- registry: pypi
+  queries: [toronto-hydro, torontohydro, greenbutton, greenbutton-python, espi]
+  first_party_hits: 0
+  note: all five return HTTP 404 on the PyPI JSON API
+- registry: rubygems
+  queries: [greenbutton]
+  first_party_hits: 0
+  note: the greenbutton gem exists (HTTP 200) but is a 2014 community ESPI file parser
+- registry: maven-central
+  first_party_hits: 0
+- registry: nuget
+  first_party_hits: 0
+- registry: pkg.go.dev
+  first_party_hits: 0
+- registry: packagist
+  first_party_hits: 0
+- registry: crates.io
+  first_party_hits: 0
+- registry: github
+  queries: [orgs/torontohydro, orgs/toronto-hydro, 'search: torontohydro OR "toronto hydro"']
+  first_party_hits: 0
+  note: >-
+    No Toronto Hydro GitHub organization exists. Repository search returns 14 results, all
+    of them customer-built or academic, none owned by Toronto Hydro.
+ecosystem:
+  note: >-
+    None of the following is published by Toronto Hydro and every entry is official:
+    false. The first group is community tooling written by Toronto Hydro customers against
+    the customer portal, which is itself evidence of the gap this profile records — people
+    resorted to browser automation because no programmatic access is offered. The second
+    group implements the NAESB REQ.21 ESPI / Green Button family that Toronto Hydro's
+    mandated Connect My Data surface belongs to.
+  community_toronto_hydro:
+  - language: python
+    registry: pypi
+    name: toronto-hydro-green-button
+    url: https://pypi.org/project/toronto-hydro-green-button/
+    repository: https://github.com/benwebber/toronto-hydro-green-button
+    install: pip install toronto-hydro-green-button
+    license: MIT
+    last_pushed: '2019-12-05'
+    description: >-
+      Exports Green Button (ESPI) usage data from a Toronto Hydro account by driving the
+      customer portal with Selenium and then downloading the report with Requests. Its
+      README states plainly that "Toronto Hydro offers a Green Button XML export through
+      the customer portal, but does not offer programmatic API access" — an independent
+      2019 corroboration of this profile's finding.
+    official: false
+  - language: javascript
+    name: torontohydrotou
+    url: https://github.com/fozboz/torontohydrotou
+    description: Express app that returns the current Toronto Hydro time-of-use rate.
+    official: false
+  - language: python
+    name: toronto-hydro-exporter
+    url: https://github.com/dtrumpfheller/toronto-hydro-exporter
+    description: Community exporter for Toronto Hydro usage data.
+    official: false
+  - language: python
+    name: TorontoHydroRateIndicator
+    url: https://github.com/ksaj/TorontoHydroRateIndicator
+    description: Script that surfaces the current Toronto electricity rate for dashboards.
+    official: false
+  green_button_standard:
+  - language: java
+    name: OpenESPI-Common-java
+    publisher: Green Button Alliance
+    url: https://github.com/GreenButtonAlliance/OpenESPI-Common-java
+    description: Common library for Green Button Third Party and Data Custodian OpenESPI applications
+    official: false
+  - language: java
+    name: OpenESPI-ThirdParty-java
+    publisher: Green Button Alliance
+    url: https://github.com/GreenButtonAlliance/OpenESPI-ThirdParty-java
+    description: Spring Framework implementation of a Green Button Third Party OpenESPI application
+    official: false
+  - language: java
+    name: OpenESPI-DataCustodian-java
+    publisher: Green Button Alliance
+    url: https://github.com/GreenButtonAlliance/OpenESPI-DataCustodian-java
+    description: Spring Framework implementation of a Green Button Data Custodian OpenESPI application
+    official: false
+  - language: ruby
+    name: OpenESPI-ThirdParty-ruby
+    publisher: Green Button Alliance
+    url: https://github.com/GreenButtonAlliance/OpenESPI-ThirdParty-ruby
+    description: A Third Party library for Ruby programmers
+    official: false
+  - language: ruby
+    registry: rubygems
+    name: greenbutton
+    url: https://rubygems.org/gems/greenbutton
+    install: gem install greenbutton
+    description: Parser that creates a Ruby object from a Green Button data file
+    publisher: third-party (Charles Worthington, Eric Hulburd)
+    official: false

@@ -1,0 +1,97 @@
+generated: '2026-07-27'
+method: searched
+source: >-
+  Toronto Hydro Green Button pages, the Third Party Terms and Conditions, the outage map,
+  the review.yml probe record, and openapi/toronto-hydro-green-button-espi-openapi.yml
+summary: >-
+  Toronto Hydro publishes no API lifecycle policy of any kind — no versioning statement, no
+  deprecation policy, no Sunset/Deprecation header commitment, no API SLA, no changelog and
+  no roadmap. The only live status surface it operates is a customer-facing outage map,
+  which reports the electricity distribution network rather than API availability.
+  Versioning for the Green Button surface is set externally by the standard and by the
+  Ontario regulation, not by Toronto Hydro. The one lifecycle commitment Toronto Hydro does
+  publish is contractual rather than technical: its Third Party Terms reserve the right to
+  modify the terms and to terminate a third party's entitlement, with a three-Business-Day
+  cure period for a curable default and immediate termination in the enumerated cases.
+versioning:
+  scheme: standard-versioned
+  governed_by: >-
+    NAESB REQ.21 ESPI Model Business Practices, versioned by the North American Energy
+    Standards Board; the binding version for Ontario is fixed by O. Reg. 633/21.
+  mandated_version: '3.3'
+  implementation_deadline: '2023-11-01'
+  implemented_version_verified: false
+  implemented_version_note: >-
+    Toronto Hydro names Green Button, the Green Button Alliance and the Ontario Ministry of
+    Energy marks on its pages, and its Third Party Terms cite O. Reg 633/21 by name, but it
+    never states an ESPI version. v3.3 is what the regulation compels, not what was
+    observed.
+  spec_in_repo_version: >-
+    The harvested Green Button Alliance OpenAPI in this repo describes ESPI 4.0 and its
+    paths carry the /espi/1_1/resource/ URI segment. That is a version gap against the
+    Ontario mandate and is recorded on the artifact itself and in the overlay.
+  provider_version_policy: null
+  provider_version_policy_note: No Toronto Hydro versioning policy exists on any page read.
+deprecation:
+  policy_url: null
+  policy_published: false
+  sunset_header: unknown
+  deprecation_header: unknown
+  note: >-
+    No deprecation policy, no RFC 8594 Sunset commitment and no notice period is published
+    for the API surface. No Deprecation pointer is wired in apis.yml because there is
+    nothing to point at. The nearest published analogue is contractual: under section 2 of
+    the Third Party Terms, Toronto Hydro may notify a third party of a default and require
+    correction within three Business Days, after which it may terminate entitlement
+    immediately; it may also terminate immediately on insolvency. Access can also end
+    without any notice to the third party at all, because the customer may revoke
+    authorization at any time and Connect My Data stops at account closure.
+deprecated_operations: []
+deprecated_operations_note: No operation in the harvested specification is marked deprecated.
+sla:
+  url: null
+  uptime_target: null
+  note: >-
+    No API SLA is published, and the Third Party Terms disclaim warranties explicitly —
+    data is provided "as-is", with Toronto Hydro undertaking only to "endeavour to ensure"
+    that data provided is the best available in accordance with applicable law and the
+    Green Button standard, and of the same accuracy and quality as any other Green Button
+    functionality it offers. Toronto Hydro's service obligations are otherwise set through
+    the Ontario Energy Board's distribution licence and scorecard, which govern the wires
+    business, not an API.
+status_page: https://outagemap.torontohydro.com/
+status_page_scope: >-
+  Electricity distribution outages only — a rendered public outage web map, confirmed HTTP
+  200 on 2026-07-27. It is NOT an API status page: it says nothing about the Green Button
+  authorization surface, the third-party onboarding application or the ESPI resource
+  surface, and it exposes no documented data feed. Recorded as the status page because it
+  is the only operational status surface Toronto Hydro runs.
+api_status_page: null
+support:
+  faq: https://www.torontohydro.com/frequently-asked-questions
+  contact: https://www.torontohydro.com/contact-us
+  business_data_requests: https://www.torontohydro.com/for-business/reporting-of-energy-consumption
+  note: >-
+    There is no developer support channel, no forum, no Slack/Discord and no
+    developer-facing ticketing. Integrator contact runs through the third-party onboarding
+    application; Toronto Hydro states "Additional information will be provided in the
+    third-party portal". Bulk business consumption requests outside Green Button run
+    through the ENERGY STAR Portfolio Manager data exchange or an emailed PDF form with a
+    four-week turnaround.
+changelog:
+  url: null
+  published: false
+  note: >-
+    No API changelog, release notes or version history exists. The newsroom at
+    https://www.torontohydro.com/newsroom (HTTP 200) is corporate communications, not API
+    change communication, and exposes no RSS or Atom feed — /newsroom/rss, /rss and /@@rss
+    all return HTTP 404 — so no ChangeLog pointer is wired.
+roadmap:
+  url: null
+  published: false
+  note: >-
+    No API roadmap. https://www.torontohydro.com/roadmap redirects to the account login
+    portlet and is not a public roadmap page. The only forward-looking commitments that
+    touch this surface are the Ontario regulation itself and Toronto Hydro's rate-regulated
+    investment plan at /regulatory-information/our-2025-29-investment-plan, which is a
+    capital plan for the wires business, not an API roadmap.

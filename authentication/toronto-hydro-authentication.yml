@@ -1,0 +1,61 @@
+generated: '2026-07-27'
+method: derived
+source: openapi/toronto-hydro-green-button-espi-openapi.yml
+docs: https://www.torontohydro.com/documents/d/guest/green-button-connect-my-data-customer-guide
+note: >-
+  The source specification is authored by the Green Button Alliance, not by Toronto Hydro,
+  and the authorizationUrl and tokenUrl below belong to the GBA sandbox. Toronto Hydro
+  publishes no OAuth endpoints, no scope reference and no anonymously served OpenID
+  Connect discovery document (see well-known/toronto-hydro-well-known.yml). What Toronto
+  Hydro does document, in its Green Button Connect My Data Customer Guide (PDF, 799 KB,
+  created 2024-10-21), is the customer-facing half of the flow, and it matches the
+  authorization-code model recorded here: the third party either emails the customer a
+  link or redirects them from its own app to "Toronto Hydro's authentication page", the
+  customer signs in with their Toronto Hydro online account (Option A) or is offered "an
+  alternative method to provide consent" if they are not registered (Option B), and is
+  then redirected to the authorization page. Client credentials are issued only after the
+  third party is approved. The concrete Toronto Hydro endpoints were NOT observed and none
+  were invented.
+summary:
+  types:
+  - oauth2
+  oauth2_flows:
+  - authorizationCode
+  - clientCredentials
+schemes:
+- name: oauth2
+  type: oauth2
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://sandbox.greenbuttonalliance.org:8443/oauth/authorize
+    tokenUrl: https://sandbox.greenbuttonalliance.org:8443/oauth/token
+    scopes: 0
+  - flow: clientCredentials
+    tokenUrl: https://sandbox.greenbuttonalliance.org:8443/oauth/token
+    scopes: 0
+  sources:
+  - openapi/toronto-hydro-green-button-espi-openapi.yml
+provider_surface:
+  authentication_page_published: false
+  authentication_page_note: >-
+    Toronto Hydro names an authentication page in its Customer Guide but does not publish
+    its URL. The two customer-facing management surfaces that ARE published both sit
+    behind the Liferay account login: https://www.torontohydro.com/my-account/green-button-data
+    (Download My Data) and https://www.torontohydro.com/my-account/green-button-connections
+    (manage and remove third-party Connect My Data connections).
+  token_endpoint_published: false
+  authorization_endpoint_published: false
+  oidc_discovery: false
+  credential_issuance: >-
+    After approval only — an online application through
+    https://torontoonboarding.savagedata.com/, a connectivity test, and acceptance of the
+    Third Party Terms and Conditions for Green Button Connect My Data.
+  consent_revocation: >-
+    The customer may revoke at any time and at their sole discretion, from the Green
+    Button connections page in their self-serve portal. Toronto Hydro's Third Party Terms
+    also state that Connect My Data is unavailable on or after the date a customer's
+    account is closed, including their final billing period.
+cross_links:
+  scopes: scopes/toronto-hydro-scopes.yml
+  conventions: conventions/toronto-hydro-conventions.yml
+  conformance: conformance/toronto-hydro-conformance.yml

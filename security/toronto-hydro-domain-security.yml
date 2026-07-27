@@ -1,0 +1,54 @@
+generated: '2026-07-27'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
+hosts:
+- host: www.torontohydro.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Sep 23 06:32:21 2026 GMT
+  hsts: true
+  hsts_max_age: 157680000
+- host: sandbox.greenbuttonalliance.org
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Sep 28 20:26:53 2026 GMT
+  hsts: null
+  note: >-
+    servers[] host of the harvested Green Button Alliance OpenAPI in this repo. Not a
+    Toronto Hydro host.
+- host: torontoonboarding.savagedata.com
+  https: true
+  tls_version: TLSv1.2
+  cert_expires: Nov 17 14:06:38 2026 GMT
+  hsts: true
+  hsts_max_age: 2592000
+  server: Microsoft-IIS/10.0
+  probed_manually: true
+  note: >-
+    Added by hand because the host is carried as DeveloperPortal/SignUp rather than
+    Website, so the automated host collector did not reach it. This is the third-party
+    Green Button onboarding application Toronto Hydro links to from its public Green
+    Button page, operated by its platform vendor Savage Data Systems. It negotiates
+    TLSv1.2 only (no TLSv1.3) and advertises a 30-day HSTS max-age — a weaker posture
+    than Toronto Hydro's own www host, on the surface a developer must actually use.
+domains:
+- domain: torontohydro.com
+  dnssec: false
+  caa: []
+  spf: true
+  dmarc: true
+  dmarc_policy: none
+- domain: greenbuttonalliance.org
+  dnssec: false
+  caa: []
+  spf: true
+  dmarc: true
+  dmarc_policy: reject
+- domain: savagedata.com
+  dnssec: false
+  caa: []
+  spf: true
+  dmarc: true
+  dmarc_policy: quarantine
+  probed_manually: true
+  note: Platform vendor domain hosting Toronto Hydro's Green Button third-party onboarding application.

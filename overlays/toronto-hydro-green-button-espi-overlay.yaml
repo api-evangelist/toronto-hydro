@@ -1,0 +1,85 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for the Green Button ESPI specification (Toronto Hydro profile)
+  version: 1.0.0
+x-generated: '2026-07-27'
+x-method: generated
+x-source: openapi/toronto-hydro-green-button-espi-openapi.yml
+x-note: >-
+  The extended document is authored by the Green Button Alliance, not by Toronto Hydro.
+  This overlay carries the API Evangelist annotations for the Toronto Hydro profile
+  without mutating the harvested specification: provenance, the ESPI version gap (the
+  document describes ESPI 4.0 while Ontario O. Reg. 633/21 mandates NAESB REQ.21 ESPI
+  v3.3), the fact that servers[] points at the Green Button Alliance sandbox rather than
+  any Toronto Hydro host, and the access gate a developer actually faces.
+extends: openapi/toronto-hydro-green-button-espi-openapi.yml
+actions:
+- target: $.info
+  update:
+    x-apievangelist-provider: toronto-hydro
+    x-apievangelist-profile: https://raw.githubusercontent.com/api-evangelist/toronto-hydro/refs/heads/main/apis.yml
+    x-apievangelist-spec-authorship: >-
+      Green Button Alliance. Toronto Hydro publishes no first-party OpenAPI, no API
+      reference and no ESPI base URI. This document is the family contract, not Toronto
+      Hydro's service.
+    x-apievangelist-mandate: >-
+      Ontario Regulation 633/21 (Energy Data) under the Electricity Act, 1998 compels
+      rate-regulated Ontario electricity and natural gas utilities to implement Green
+      Button Download My Data and Connect My Data to NAESB REQ.21 ESPI v3.3, with an
+      implementation deadline of 1 November 2023. Toronto Hydro-Electric System Limited
+      is squarely inside that class.
+    x-apievangelist-version-gap: >-
+      This document declares ESPI 4.0. The Ontario mandate is ESPI v3.3. Do not assume
+      the two are interchangeable when integrating with an Ontario distributor.
+    x-apievangelist-access-gate: >-
+      application-approval. A third party must submit an online application through
+      Toronto Hydro's third-party portal at https://torontoonboarding.savagedata.com/,
+      complete a connectivity test, and comply with the Third Party Terms and Conditions
+      for Green Button Connect My Data at
+      https://www.torontohydro.com/green-button/third-party-terms — which also require
+      the third party to carry Commercial General Liability, Professional Liability,
+      Property Damage and Workman's Compensation insurance and to name Toronto Hydro as
+      an additional insured. Connection details are issued only after approval; Toronto
+      Hydro states "Additional information will be provided in the third-party portal".
+      There is no self-serve signup, no published pricing and no sandbox.
+- target: $.servers
+  update:
+    x-apievangelist-note: >-
+      The single declared server is the Green Button Alliance sandbox, NOT a Toronto
+      Hydro host. No Toronto Hydro ESPI base URI is published anywhere.
+      api.torontohydro.com, docs.torontohydro.com, developer.torontohydro.com and
+      data.torontohydro.com do not resolve at all (2026-07-27).
+- target: $.components.securitySchemes.oauth2
+  update:
+    x-apievangelist-note: >-
+      The scopes object is empty in the source document; no scope names were invented.
+      Toronto Hydro publishes no scope reference and serves no OpenID Connect discovery
+      document — https://www.torontohydro.com/.well-known/openid-configuration returns
+      404 and every /.well-known/ 200 on the vendor onboarding host is a Blazor SPA
+      shell that matches an invented-path control probe. Toronto Hydro's own Connect My
+      Data Customer Guide describes the redirect-and-consent half of the flow: the third
+      party emails the customer a link or redirects them to Toronto Hydro's
+      authentication page, the customer signs in to their Toronto Hydro online account
+      (Option A) or uses an alternate consent method if they have no account (Option B),
+      then lands on the authorization page.
+- target: $.paths['/espi/1_1/resource/UsagePoint'].get
+  update:
+    x-apievangelist-note: >-
+      Pagination in ESPI is Atom-style: start-index (1-indexed) plus max-results, with
+      published-min/published-max and updated-min/updated-max RFC 3339 time filters and a
+      depth control. Responses are application/atom+xml feeds, not JSON.
+- target: $.paths['/espi/1_1/resource/Authorization'].get
+  update:
+    x-apievangelist-note: >-
+      The Authorization resource is where the Toronto Hydro consent contract actually
+      lives. Toronto Hydro's Third Party Terms state that a customer may revoke
+      authorization independently at any time and at their sole discretion, and that
+      Connect My Data is unavailable on or after the date a customer's account is closed
+      — including their final billing period. Treat a disappearing or revoked
+      Authorization as an expected steady state, not a defect.
+- target: $.paths['/espi/1_1/resource/Batch/Bulk/{bulkId}'].get
+  update:
+    x-apievangelist-note: >-
+      Bulk transfer is the asynchronous path — a 202 Accepted is a normal, expected
+      outcome here and the client must be prepared to poll rather than treat it as an
+      error.

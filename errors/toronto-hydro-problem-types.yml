@@ -1,0 +1,68 @@
+generated: '2026-07-27'
+method: derived
+source: openapi/toronto-hydro-green-button-espi-openapi.yml
+format: none
+format_note: >-
+  Not RFC 9457. The specification declares 400 and 403 responses with a description only —
+  no content object, no schema and no application/problem+json media type — so there is no
+  machine-readable error envelope to catalogue. Toronto Hydro itself publishes no error
+  reference of any kind, so nothing could be searched to enrich these entries. Titles below
+  are the response descriptions verbatim from the spec; the interpretation lines are
+  derived from the ESPI/Green Button model and from Toronto Hydro's published Third Party
+  Terms, and are labelled as such.
+provenance_note: >-
+  The extended specification is authored by the Green Button Alliance, not by Toronto
+  Hydro. These are the error responses of the ESPI family contract, not observed Toronto
+  Hydro responses — no live Toronto Hydro endpoint could be reached without completing
+  third-party onboarding.
+applies_to_operations:
+- findApplicationInformations
+- getApplicationInformation
+- findAuthorizations
+- getAuthorization
+- downloadBulkData
+- findUsagePoints
+- getUsagePoint
+problems:
+- status: 400
+  title: Bad Request
+  media_type: null
+  interpretation: >-
+    Derived. Malformed query parameters — most commonly a published-min/published-max or
+    updated-min/updated-max value that is not an RFC 3339 instant, or a non-integer
+    start-index, max-results or depth.
+  source_operations: [findApplicationInformations, getApplicationInformation, findAuthorizations,
+    getAuthorization, downloadBulkData, findUsagePoints, getUsagePoint]
+- status: 403
+  title: Forbidden
+  media_type: null
+  interpretation: >-
+    Derived. The bearer token does not carry an authorization covering the requested
+    resource. In the Green Button model an authorization is customer-granted and revocable,
+    and Toronto Hydro's Third Party Terms make two revocation paths explicit: a customer
+    may revoke independently at any time at their sole discretion, and Connect My Data is
+    unavailable on or after the date a customer's account is closed, including their final
+    billing period. Toronto Hydro may also terminate a third party's entitlement — after a
+    three-Business-Day cure notice, or immediately in the cases the Terms enumerate. A 403
+    on a previously working call is therefore an expected steady-state outcome, not
+    necessarily a client defect; re-obtaining consent, not retrying, is the remediation.
+  source_operations: [findApplicationInformations, getApplicationInformation, findAuthorizations,
+    getAuthorization, downloadBulkData, findUsagePoints, getUsagePoint]
+non_error_statuses:
+- status: 202
+  title: Accepted
+  media_type: application/atom+xml
+  interpretation: >-
+    Derived. Declared on every operation and load-bearing on downloadBulkData, where bulk
+    transfer is asynchronous. A client must treat 202 as a normal outcome and poll rather
+    than fail.
+not_documented:
+- 401
+- 404
+- 429
+- 5xx
+not_documented_note: >-
+  The specification declares no 401, 404, 429 or 5xx response on any operation, and no
+  rate-limit or quota behaviour is documented anywhere by Toronto Hydro. A client should
+  not assume these do not occur — they are simply absent from the contract. Nothing was
+  invented to fill the gap.

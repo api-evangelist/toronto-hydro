@@ -1,0 +1,119 @@
+generated: '2026-07-27'
+method: searched
+source: anonymous HTTP probes with a browser User-Agent, following redirects
+summary: >-
+  No /.well-known/ discovery document is served anonymously on any Toronto Hydro host or
+  on the Savage Data Systems host that operates Toronto Hydro's Green Button third-party
+  onboarding. Every 200 recorded below on torontoonboarding.savagedata.com is the Blazor
+  SPA shell, not a document: each was control-tested against the invented path
+  /this-path-should-not-exist-12345, which returns the same content-type and a body within
+  twenty bytes of the same length. Those 200s are recorded as discounted: true and are NOT
+  evidence of a discovery surface. No security.txt exists anywhere, so no SecurityTxt
+  pointer is wired. No llms.txt exists, so llms/toronto-hydro-llms.txt is generated rather
+  than harvested.
+control_probe:
+  method: >-
+    Each torontoonboarding.savagedata.com response was compared against the response for an
+    invented path on the same host before being trusted.
+  results:
+  - url: https://torontoonboarding.savagedata.com/this-path-should-not-exist-12345
+    status: 200
+    content_type: text/html; charset=utf-8
+    bytes: 1887
+  - url: https://www.torontohydro.com/this-path-should-not-exist-12345
+    status: 404
+    content_type: text/html;charset=UTF-8
+    bytes: 173353
+    note: Liferay 404 page — the www host returns a real 404 status, so its 404s are trustworthy.
+hosts:
+- host: https://www.torontohydro.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /llms.txt
+    status: 404
+  - path: /openapi.json
+    status: 404
+  - path: /swagger.json
+    status: 404
+  - path: /robots.txt
+    status: 200
+    note: recorded HTTP 200 in review.yml; no api, developer, data or green-button paths referenced
+  - path: /sitemap.xml
+    status: 200
+    note: Liferay sitemap index; surfaces no api, developer, data or green-button URLs
+- host: https://torontoonboarding.savagedata.com
+  note: >-
+    Third-party Green Button registration application (Blazor Server, title
+    "3rdPartyRegistration"), operated by platform vendor Savage Data Systems and linked
+    directly from Toronto Hydro's public Green Button page. Catch-all SPA on the
+    /.well-known/ namespace.
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /security.txt
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /llms.txt
+    status: 404
+  - path: /openapi.json
+    status: 404
+  - path: /swagger.json
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 200
+    discounted: true
+    reason: SPA shell (text/html, 1872 bytes) vs control probe 1887 bytes on the same host
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    discounted: true
+    reason: SPA shell (text/html, 1872 bytes) matching the control probe, not a document
+  - path: /.well-known/oauth-protected-resource
+    status: 200
+    discounted: true
+    reason: SPA shell (text/html, 1872 bytes) matching the control probe, not a document
+  - path: /.well-known/api-catalog
+    status: 200
+    discounted: true
+    reason: SPA shell (text/html, 1867 bytes) matching the control probe, not a document
+- host: https://outagemap.torontohydro.com
+  note: >-
+    Public outage web map (HTTP 200 at root, 1065 bytes). Every path probed returns a real
+    404 with an identical 570-byte body. No documented data feed.
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /llms.txt
+    status: 404
+  - path: /openapi.json
+    status: 404
+- host: https://sandbox.greenbuttonalliance.org:8443
+  note: >-
+    servers[] host of the harvested Green Button Alliance OpenAPI. Not a Toronto Hydro
+    host — recorded because it is the only server declared in a spec in this repo.
+  documents: []
+findings:
+  security_txt: false
+  openid_configuration: false
+  oauth_authorization_server: false
+  oauth_protected_resource: false
+  api_catalog: false
+  ai_plugin: false
+  llms_txt: false

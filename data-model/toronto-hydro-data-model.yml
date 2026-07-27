@@ -1,0 +1,161 @@
+generated: '2026-07-27'
+method: derived
+source: openapi/toronto-hydro-green-button-espi-openapi.yml
+provenance_note: >-
+  Derived from the Green Button Alliance ESPI specification harvested into this repo.
+  Toronto Hydro publishes no object reference, no id scheme and no schema documentation, so
+  nothing here could be enriched from a Toronto Hydro source. This is the ESPI family data
+  model that Toronto Hydro's mandated Connect My Data surface belongs to, not an observed
+  Toronto Hydro payload.
+transport:
+  envelope: Atom (RFC 4287)
+  media_type: application/atom+xml
+  note: >-
+    Every ESPI resource is delivered inside an Atom envelope. AtomFeed contains AtomEntry
+    items, each of which wraps one ESPI resource in AtomContent. The envelope is part of the
+    contract, not incidental — a client must traverse it to reach ApplicationInformation,
+    Authorization or UsagePoint.
+entities:
+- name: AtomFeed
+  kind: envelope
+  description: Atom Feed (RFC 4287) containing ESPI resources
+  fields: [id, title, updated, link, entry]
+- name: AtomEntry
+  kind: envelope
+  description: Atom feed entry containing one ESPI resource
+  fields: [id, title, published, updated, link, content]
+- name: AtomContent
+  kind: envelope
+  description: Atom content element containing the ESPI resource
+  fields: [type]
+- name: AtomLink
+  kind: envelope
+  description: Atom link element; rel values such as self and up carry the resource graph
+  fields: [href, rel, type]
+- name: ApplicationInformation
+  kind: resource
+  description: >-
+    The registered third-party application requesting access to Data Custodian services —
+    effectively the OAuth client record. This is the artifact Toronto Hydro's third-party
+    application, connectivity test and Terms acceptance produce.
+  fields: [dataCustodianId, dataCustodianApplicationStatus, thirdPartyApplicationDescription,
+    thirdPartyApplicationStatus, thirdPartyApplicationType, thirdPartyApplicationUse, client_name,
+    client_id, client_secret, redirect_uri, scope, grant_types]
+  operations: [findApplicationInformations, getApplicationInformation]
+  enumerations:
+    thirdPartyApplicationType: {1: Web, 2: Desktop, 3: Mobile, 4: Device}
+- name: Authorization
+  kind: resource
+  description: >-
+    A permission granted by a resource owner (the Toronto Hydro customer) for access to a
+    resource. This is the object that carries customer consent, its negotiated scope and its
+    expiry, and it is the object a revocation acts on — the machine-readable counterpart of
+    the connection a customer removes at
+    https://www.torontohydro.com/my-account/green-button-connections.
+  fields: [status, expires_at, grant_type, scope, token_type, resourceURI, authorizationURI,
+    customerResourceURI]
+  operations: [findAuthorizations, getAuthorization]
+  enumerations:
+    status: {0: Revoked, 1: Active, 2: Denied}
+- name: UsagePoint
+  kind: resource
+  description: >-
+    Logical point on the network at which consumption or production is measured or estimated
+    — the meter-level anchor the interval data hangs from.
+  fields: [roleFlags, ServiceCategory, status, isSdp, isVirtual, connectionState]
+  operations: [findUsagePoints, getUsagePoint]
+  enumerations:
+    ServiceCategory: {0: electricity, 1: gas, 2: water}
+    status: {0: 'off', 1: 'on'}
+  note: >-
+    Toronto Hydro is an electricity distributor only — it does not distribute gas or water,
+    so ServiceCategory 0 is the only value a Toronto Hydro integration should expect.
+relationships:
+- from: AtomFeed
+  to: AtomEntry
+  type: has_many
+  via: entry
+  evidence: $ref array in components.schemas.AtomFeed.properties.entry.items
+- from: AtomFeed
+  to: AtomLink
+  type: has_many
+  via: link
+  evidence: $ref array in components.schemas.AtomFeed.properties.link.items
+- from: AtomEntry
+  to: AtomLink
+  type: has_many
+  via: link
+  evidence: $ref array in components.schemas.AtomEntry.properties.link.items
+- from: AtomEntry
+  to: AtomContent
+  type: has_one
+  via: content
+  evidence: $ref in components.schemas.AtomEntry.properties.content
+- from: AtomContent
+  to: ApplicationInformation
+  type: contains
+  via: espi-resource
+  confidence: medium
+  evidence: >-
+    Not a $ref in the document — AtomContent declares only a media type. The containment is
+    the ESPI contract: every resource operation returns application/atom+xml, so
+    ApplicationInformation, Authorization and UsagePoint reach the client inside AtomContent.
+- from: AtomContent
+  to: Authorization
+  type: contains
+  via: espi-resource
+  confidence: medium
+  evidence: same as above
+- from: AtomContent
+  to: UsagePoint
+  type: contains
+  via: espi-resource
+  confidence: medium
+  evidence: same as above
+- from: ApplicationInformation
+  to: Authorization
+  type: has_many
+  via: client_id / scope
+  confidence: medium
+  evidence: >-
+    Derived from field semantics, not a $ref. ApplicationInformation is the OAuth client
+    (client_id, scope, grant_types); Authorization records the negotiated grant_type and
+    scope for one customer against that client.
+- from: Authorization
+  to: UsagePoint
+  type: references
+  via: resourceURI
+  confidence: medium
+  evidence: >-
+    Authorization.resourceURI is described as the URI to access the authorized resource — in
+    Connect My Data that resolves to the customer's UsagePoint collection. It is a URI
+    string, not a typed $ref, so the binding is by convention.
+- from: Authorization
+  to: Customer
+  type: references
+  via: customerResourceURI
+  confidence: medium
+  evidence: >-
+    Authorization.customerResourceURI is the URI to the PII data authorized for the
+    customer. Toronto Hydro's Green Button page lists "customer information" as one of the
+    three data classes alongside consumption and billing detail, which is exactly this
+    split. No Customer schema is defined in this document, so the target entity is named but
+    not modelled here.
+missing_from_spec:
+- MeterReading
+- IntervalBlock
+- IntervalReading
+- ReadingType
+- ElectricPowerUsageSummary
+- ElectricPowerQualitySummary
+- RetailCustomer
+missing_note: >-
+  The harvested document models only ApplicationInformation, Authorization and UsagePoint —
+  the registration and consent layer plus the meter anchor. The ESPI resources that carry
+  the actual interval consumption values (MeterReading, IntervalBlock, IntervalReading,
+  ReadingType and the usage summaries) are NOT defined in this specification, and Toronto
+  Hydro publishes no schema for them. They are listed here as a known gap; nothing was
+  invented to fill it.
+id_prefixes: null
+id_prefixes_note: ESPI uses opaque path identifiers and self-referencing URIs; no id scheme is published.
+render: null
