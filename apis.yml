@@ -34,7 +34,7 @@ tags:
 - Electricity Distribution
 created: '2026-07-27'
 modified: '2026-07-27'
-specificationVersion: '0.19'
+specificationVersion: '0.23'
 apis:
 - aid: toronto-hydro:toronto-hydro-green-button-connect-my-data
   name: Toronto Hydro Green Button Connect My Data
