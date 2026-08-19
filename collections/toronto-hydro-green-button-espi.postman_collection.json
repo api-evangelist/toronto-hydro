@@ -1,0 +1,2698 @@
+{
+  "item": [
+    {
+      "id": "b6e527f6-71ae-47ca-a2a0-60f5e4210211",
+      "name": "ApplicationInformation",
+      "description": {
+        "content": "Application Information endpoints",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d6ef1473-18ed-4346-a246-2105ec33b28e",
+          "name": "Retrieve all Application Information [FB_33]",
+          "request": {
+            "name": "Retrieve all Application Information [FB_33]",
+            "description": {},
+            "url": {
+              "path": [
+                "espi",
+                "1_1",
+                "resource",
+                "ApplicationInformation"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "published-max",
+                  "value": "<date>",
+                  "description": "Maximum publication date (RFC 3339 instant)"
+                },
+                {
+                  "disabled": false,
+                  "key": "published-min",
+                  "value": "<date>",
+                  "description": "Minimum publication date (RFC 3339 instant)"
+                },
+                {
+                  "disabled": false,
+                  "key": "updated-max",
+                  "value": "<date>",
+                  "description": "Maximum update date (RFC 3339 instant)"
+                },
+                {
+                  "disabled": false,
+                  "key": "updated-min",
+                  "value": "<date>",
+                  "description": "Minimum update date (RFC 3339 instant)"
+                },
+                {
+                  "disabled": false,
+                  "key": "max-results",
+                  "value": "<long>",
+                  "description": "Maximum number of results to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "start-index",
+                  "value": "<long>",
+                  "description": "Index of first result (1-indexed)"
+                },
+                {
+                  "disabled": false,
+                  "key": "depth",
+                  "value": "<long>",
+                  "description": "Response depth control"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/atom+xml"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "498d6653-3c10-4b30-afe9-b433468dd5f9",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "espi",
+                    "1_1",
+                    "resource",
+                    "ApplicationInformation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "published-max",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "published-min",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "updated-max",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "updated-min",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "max-results",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "start-index",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "depth",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/atom+xml"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/atom+xml"
+                }
+              ],
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<feed xmlns=\"http://www.w3.org/2005/Atom\">\n  <id>(string)</id>\n  <title>(string)</title>\n  <updated>(string)</updated>\n  <link>\n    <href>(string)</href>\n    <rel>(string)</rel>\n    <type>(string)</type>\n  </link>\n  <link>\n    <href>(string)</href>\n    <rel>(string)</rel>\n    <type>(string)</type>\n  </link>\n  <entry>\n    <id>(string)</id>\n    <title>(string)</title>\n    <published>(string)</published>\n    <updated>(string)</updated>\n    <link>\n      <href>(string)</href>\n      <rel>(string)</rel>\n      <type>(string)</type>\n    </link>\n    <link>\n      <href>(string)</href>\n      <rel>(string)</rel>\n      <type>(string)</type>\n    </link>\n    <content xmlns=\"http://www.w3.org/2005/Atom\">\n      <type>(string)</type>\n    </content>\n  </entry>\n  <entry>\n    <id>(string)</id>\n    <title>(string)</title>\n    <published>(string)</published>\n    <updated>(string)</updated>\n    <link>\n      <href>(string)</href>\n      <rel>(string)</rel>\n      <type>(string)</type>\n    </link>\n    <link>\n      <href>(string)</href>\n      <rel>(string)</rel>\n      <type>(string)</type>\n    </link>\n    <content xmlns=\"http://www.w3.org/2005/Atom\">\n      <type>(string)</type>\n    </content>\n  </entry>\n</feed>",
+              "cookie": [],
+              "_postman_previewlanguage": "xml"
+            },
+            {
+              "id": "e1bfc6d4-f7d4-40c0-a46f-c8124683116a",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "espi",
+                    "1_1",
+                    "resource",
+                    "ApplicationInformation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "published-max",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "published-min",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "updated-max",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "updated-min",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "max-results",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "start-index",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "depth",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/atom+xml"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/atom+xml"
+                }
+              ],
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<feed xmlns=\"http://www.w3.org/2005/Atom\">\n  <id>(string)</id>\n  <title>(string)</title>\n  <updated>(string)</updated>\n  <link>\n    <href>(string)</href>\n    <rel>(string)</rel>\n    <type>(string)</type>\n  </link>\n  <link>\n    <href>(string)</href>\n    <rel>(string)</rel>\n    <type>(string)</type>\n  </link>\n  <entry>\n    <id>(string)</id>\n    <title>(string)</title>\n    <published>(string)</published>\n    <updated>(string)</updated>\n    <link>\n      <href>(string)</href>\n      <rel>(string)</rel>\n      <type>(string)</type>\n    </link>\n    <link>\n      <href>(string)</href>\n      <rel>(string)</rel>\n      <type>(string)</type>\n    </link>\n    <content xmlns=\"http://www.w3.org/2005/Atom\">\n      <type>(string)</type>\n    </content>\n  </entry>\n  <entry>\n    <id>(string)</id>\n    <title>(string)</title>\n    <published>(string)</published>\n    <updated>(string)</updated>\n    <link>\n      <href>(string)</href>\n      <rel>(string)</rel>\n      <type>(string)</type>\n    </link>\n    <link>\n      <href>(string)</href>\n      <rel>(string)</rel>\n      <type>(string)</type>\n    </link>\n    <content xmlns=\"http://www.w3.org/2005/Atom\">\n      <type>(string)</type>\n    </content>\n  </entry>\n</feed>",
+              "cookie": [],
+              "_postman_previewlanguage": "xml"
+            },
+            {
+              "id": "76c3b23a-e00c-4153-a05d-d68d181ba344",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "espi",
+                    "1_1",
+                    "resource",
+                    "ApplicationInformation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "published-max",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "published-min",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "updated-max",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "updated-min",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "max-results",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "start-index",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "depth",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d4639a8e-92c5-41ef-9649-0c6edf0c2cf9",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "espi",
+                    "1_1",
+                    "resource",
+                    "ApplicationInformation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "published-max",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "published-min",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "updated-max",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "updated-min",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "max-results",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "start-index",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "depth",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0e13d1d3-a637-4a03-9dad-6c6cc272bd36",
+          "name": "Retrieve Application Information by Id [FB_3]",
+          "request": {
+            "name": "Retrieve Application Information by Id [FB_3]",
+            "description": {},
+            "url": {
+              "path": [
+                "espi",
+                "1_1",
+                "resource",
+                "ApplicationInformation",
+                ":applicationInformationId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "applicationInformationId",
+                  "description": "(Required) Unique identifier for the ApplicationInformation resource"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/atom+xml"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5f42f2aa-1cc2-49f5-858c-ffe5817a4285",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "espi",
+                    "1_1",
+                    "resource",
+                    "ApplicationInformation",
+                    ":applicationInformationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "applicationInformationId",
+                      "description": "(Required) Unique identifier for the ApplicationInformation resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/atom+xml"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/atom+xml"
+                }
+              ],
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<ApplicationInformation xmlns=\"http://naesb.org/espi\">\n  <dataCustodianId>(string)</dataCustodianId>\n  <dataCustodianApplicationStatus>(integer)</dataCustodianApplicationStatus>\n  <thirdPartyApplicationDescription>(string)</thirdPartyApplicationDescription>\n  <thirdPartyApplicationStatus>(integer)</thirdPartyApplicationStatus>\n  <thirdPartyApplicationType>(integer)</thirdPartyApplicationType>\n  <thirdPartyApplicationUse>(integer)</thirdPartyApplicationUse>\n  <client_name>(string)</client_name>\n  <client_id>(string)</client_id>\n  <client_secret>(string)</client_secret>\n  <redirect_uri>(string)</redirect_uri>\n  <redirect_uri>(string)</redirect_uri>\n  <scope>(string)</scope>\n  <scope>(string)</scope>\n  <grant_types>(string)</grant_types>\n  <grant_types>(string)</grant_types>\n</ApplicationInformation>",
+              "cookie": [],
+              "_postman_previewlanguage": "xml"
+            },
+            {
+              "id": "31c983aa-bd28-43e2-bbd4-1b4641f2e3fa",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "espi",
+                    "1_1",
+                    "resource",
+                    "ApplicationInformation",
+                    ":applicationInformationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "applicationInformationId",
+                      "description": "(Required) Unique identifier for the ApplicationInformation resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/atom+xml"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/atom+xml"
+                }
+              ],
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<ApplicationInformation xmlns=\"http://naesb.org/espi\">\n  <dataCustodianId>(string)</dataCustodianId>\n  <dataCustodianApplicationStatus>(integer)</dataCustodianApplicationStatus>\n  <thirdPartyApplicationDescription>(string)</thirdPartyApplicationDescription>\n  <thirdPartyApplicationStatus>(integer)</thirdPartyApplicationStatus>\n  <thirdPartyApplicationType>(integer)</thirdPartyApplicationType>\n  <thirdPartyApplicationUse>(integer)</thirdPartyApplicationUse>\n  <client_name>(string)</client_name>\n  <client_id>(string)</client_id>\n  <client_secret>(string)</client_secret>\n  <redirect_uri>(string)</redirect_uri>\n  <redirect_uri>(string)</redirect_uri>\n  <scope>(string)</scope>\n  <scope>(string)</scope>\n  <grant_types>(string)</grant_types>\n  <grant_types>(string)</grant_types>\n</ApplicationInformation>",
+              "cookie": [],
+              "_postman_previewlanguage": "xml"
+            },
+            {
+              "id": "0cd7792c-744d-4e88-b6cb-b3f8e0e9cc04",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "espi",
+                    "1_1",
+                    "resource",
+                    "ApplicationInformation",
+                    ":applicationInformationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "applicationInformationId",
+                      "description": "(Required) Unique identifier for the ApplicationInformation resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "adbf52bd-33ef-462b-9ede-4b0e2932d7f8",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "espi",
+                    "1_1",
+                    "resource",
+                    "ApplicationInformation",
+                    ":applicationInformationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "applicationInformationId",
+                      "description": "(Required) Unique identifier for the ApplicationInformation resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "7a5eb42f-c111-496b-afe7-41b9f9122850",
+      "name": "Authorization",
+      "description": {
+        "content": "Authorization endpoints",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "de2bfc68-5240-4559-8eb9-76ec51d0788e",
+          "name": "Find all Authorizations [FB_3]",
+          "request": {
+            "name": "Find all Authorizations [FB_3]",
+            "description": {},
+            "url": {
+              "path": [
+                "espi",
+                "1_1",
+                "resource",
+                "Authorization"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "published-max",
+                  "value": "<date>",
+                  "description": "Maximum publication date (RFC 3339 instant)"
+                },
+                {
+                  "disabled": false,
+                  "key": "published-min",
+                  "value": "<date>",
+                  "description": "Minimum publication date (RFC 3339 instant)"
+                },
+                {
+                  "disabled": false,
+                  "key": "updated-max",
+                  "value": "<date>",
+                  "description": "Maximum update date (RFC 3339 instant)"
+                },
+                {
+                  "disabled": false,
+                  "key": "updated-min",
+                  "value": "<date>",
+                  "description": "Minimum update date (RFC 3339 instant)"
+                },
+                {
+                  "disabled": false,
+                  "key": "max-results",
+                  "value": "<long>",
+                  "description": "Maximum number of results to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "start-index",
+                  "value": "<long>",
+                  "description": "Index of first result (1-indexed)"
+                },
+                {
+                  "disabled": false,
+                  "key": "depth",
+                  "value": "<long>",
+                  "description": "Response depth control"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/atom+xml"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f7383e92-8d1d-42a6-9c7a-2be6273fc193",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "espi",
+                    "1_1",
+                    "resource",
+                    "Authorization"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "published-max",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "published-min",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "updated-max",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "updated-min",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "max-results",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "start-index",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "depth",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/atom+xml"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/atom+xml"
+                }
+              ],
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<feed xmlns=\"http://www.w3.org/2005/Atom\">\n  <id>(string)</id>\n  <title>(string)</title>\n  <updated>(string)</updated>\n  <link>\n    <href>(string)</href>\n    <rel>(string)</rel>\n    <type>(string)</type>\n  </link>\n  <link>\n    <href>(string)</href>\n    <rel>(string)</rel>\n    <type>(string)</type>\n  </link>\n  <entry>\n    <id>(string)</id>\n    <title>(string)</title>\n    <published>(string)</published>\n    <updated>(string)</updated>\n    <link>\n      <href>(string)</href>\n      <rel>(string)</rel>\n      <type>(string)</type>\n    </link>\n    <link>\n      <href>(string)</href>\n      <rel>(string)</rel>\n      <type>(string)</type>\n    </link>\n    <content xmlns=\"http://www.w3.org/2005/Atom\">\n      <type>(string)</type>\n    </content>\n  </entry>\n  <entry>\n    <id>(string)</id>\n    <title>(string)</title>\n    <published>(string)</published>\n    <updated>(string)</updated>\n    <link>\n      <href>(string)</href>\n      <rel>(string)</rel>\n      <type>(string)</type>\n    </link>\n    <link>\n      <href>(string)</href>\n      <rel>(string)</rel>\n      <type>(string)</type>\n    </link>\n    <content xmlns=\"http://www.w3.org/2005/Atom\">\n      <type>(string)</type>\n    </content>\n  </entry>\n</feed>",
+              "cookie": [],
+              "_postman_previewlanguage": "xml"
+            },
+            {
+              "id": "bfd1407c-7548-4fc6-9b53-2ffacb29e4e9",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "espi",
+                    "1_1",
+                    "resource",
+                    "Authorization"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "published-max",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "published-min",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "updated-max",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "updated-min",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "max-results",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "start-index",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "depth",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/atom+xml"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/atom+xml"
+                }
+              ],
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<feed xmlns=\"http://www.w3.org/2005/Atom\">\n  <id>(string)</id>\n  <title>(string)</title>\n  <updated>(string)</updated>\n  <link>\n    <href>(string)</href>\n    <rel>(string)</rel>\n    <type>(string)</type>\n  </link>\n  <link>\n    <href>(string)</href>\n    <rel>(string)</rel>\n    <type>(string)</type>\n  </link>\n  <entry>\n    <id>(string)</id>\n    <title>(string)</title>\n    <published>(string)</published>\n    <updated>(string)</updated>\n    <link>\n      <href>(string)</href>\n      <rel>(string)</rel>\n      <type>(string)</type>\n    </link>\n    <link>\n      <href>(string)</href>\n      <rel>(string)</rel>\n      <type>(string)</type>\n    </link>\n    <content xmlns=\"http://www.w3.org/2005/Atom\">\n      <type>(string)</type>\n    </content>\n  </entry>\n  <entry>\n    <id>(string)</id>\n    <title>(string)</title>\n    <published>(string)</published>\n    <updated>(string)</updated>\n    <link>\n      <href>(string)</href>\n      <rel>(string)</rel>\n      <type>(string)</type>\n    </link>\n    <link>\n      <href>(string)</href>\n      <rel>(string)</rel>\n      <type>(string)</type>\n    </link>\n    <content xmlns=\"http://www.w3.org/2005/Atom\">\n      <type>(string)</type>\n    </content>\n  </entry>\n</feed>",
+              "cookie": [],
+              "_postman_previewlanguage": "xml"
+            },
+            {
+              "id": "19348f81-737a-4807-bd00-723f81666ffb",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "espi",
+                    "1_1",
+                    "resource",
+                    "Authorization"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "published-max",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "published-min",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "updated-max",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "updated-min",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "max-results",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "start-index",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "depth",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "fb020c53-a3a1-4343-b163-b9a9272f54e7",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "espi",
+                    "1_1",
+                    "resource",
+                    "Authorization"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "published-max",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "published-min",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "updated-max",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "updated-min",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "max-results",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "start-index",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "depth",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "aff6c65d-21ea-468c-b773-c6f9eb942d9c",
+          "name": "Retrieve Authorization by Id [FB_3]",
+          "request": {
+            "name": "Retrieve Authorization by Id [FB_3]",
+            "description": {},
+            "url": {
+              "path": [
+                "espi",
+                "1_1",
+                "resource",
+                "Authorization",
+                ":authorizationId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "published-max",
+                  "value": "<date>",
+                  "description": "Maximum publication date (RFC 3339 instant)"
+                },
+                {
+                  "disabled": false,
+                  "key": "published-min",
+                  "value": "<date>",
+                  "description": "Minimum publication date (RFC 3339 instant)"
+                },
+                {
+                  "disabled": false,
+                  "key": "updated-max",
+                  "value": "<date>",
+                  "description": "Maximum update date (RFC 3339 instant)"
+                },
+                {
+                  "disabled": false,
+                  "key": "updated-min",
+                  "value": "<date>",
+                  "description": "Minimum update date (RFC 3339 instant)"
+                },
+                {
+                  "disabled": false,
+                  "key": "max-results",
+                  "value": "<long>",
+                  "description": "Maximum number of results to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "start-index",
+                  "value": "<long>",
+                  "description": "Index of first result (1-indexed)"
+                },
+                {
+                  "disabled": false,
+                  "key": "depth",
+                  "value": "<long>",
+                  "description": "Response depth control"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "authorizationId",
+                  "description": "(Required) Unique identifier for the Authorization resource"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/atom+xml"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f5f83036-849e-4939-92a8-1becd535c15d",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "espi",
+                    "1_1",
+                    "resource",
+                    "Authorization",
+                    ":authorizationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "published-max",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "published-min",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "updated-max",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "updated-min",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "max-results",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "start-index",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "depth",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "authorizationId",
+                      "description": "(Required) Unique identifier for the Authorization resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/atom+xml"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/atom+xml"
+                }
+              ],
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<Authorization xmlns=\"http://naesb.org/espi\">\n  <status>(integer)</status>\n  <expires_at>(integer)</expires_at>\n  <grant_type>(string)</grant_type>\n  <scope>(string)</scope>\n  <token_type>(string)</token_type>\n  <resourceURI>(string)</resourceURI>\n  <authorizationURI>(string)</authorizationURI>\n  <customerResourceURI>(string)</customerResourceURI>\n</Authorization>",
+              "cookie": [],
+              "_postman_previewlanguage": "xml"
+            },
+            {
+              "id": "4bed626e-786f-421a-b8d8-77b56e0eab35",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "espi",
+                    "1_1",
+                    "resource",
+                    "Authorization",
+                    ":authorizationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "published-max",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "published-min",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "updated-max",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "updated-min",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "max-results",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "start-index",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "depth",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "authorizationId",
+                      "description": "(Required) Unique identifier for the Authorization resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/atom+xml"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/atom+xml"
+                }
+              ],
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<Authorization xmlns=\"http://naesb.org/espi\">\n  <status>(integer)</status>\n  <expires_at>(integer)</expires_at>\n  <grant_type>(string)</grant_type>\n  <scope>(string)</scope>\n  <token_type>(string)</token_type>\n  <resourceURI>(string)</resourceURI>\n  <authorizationURI>(string)</authorizationURI>\n  <customerResourceURI>(string)</customerResourceURI>\n</Authorization>",
+              "cookie": [],
+              "_postman_previewlanguage": "xml"
+            },
+            {
+              "id": "5a6cd548-2427-441d-8467-f8b30427fe6b",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "espi",
+                    "1_1",
+                    "resource",
+                    "Authorization",
+                    ":authorizationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "published-max",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "published-min",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "updated-max",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "updated-min",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "max-results",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "start-index",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "depth",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "authorizationId",
+                      "description": "(Required) Unique identifier for the Authorization resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "286df56f-0e52-4d52-b079-6a6a6b23d57c",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "espi",
+                    "1_1",
+                    "resource",
+                    "Authorization",
+                    ":authorizationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "published-max",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "published-min",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "updated-max",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "updated-min",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "max-results",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "start-index",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "depth",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "authorizationId",
+                      "description": "(Required) Unique identifier for the Authorization resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "39c460a1-254a-40cf-a667-6cdf2fbc51a4",
+      "name": "Batch",
+      "description": {
+        "content": "Batch data transfer endpoints",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9823f6dd-5e1a-4779-b4d7-396128dcb642",
+          "name": "Request Bulk transfer [FB_35]",
+          "request": {
+            "name": "Request Bulk transfer [FB_35]",
+            "description": {},
+            "url": {
+              "path": [
+                "espi",
+                "1_1",
+                "resource",
+                "Batch",
+                "Bulk",
+                ":bulkId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "published-max",
+                  "value": "<date>",
+                  "description": "Maximum publication date (RFC 3339 instant)"
+                },
+                {
+                  "disabled": false,
+                  "key": "published-min",
+                  "value": "<date>",
+                  "description": "Minimum publication date (RFC 3339 instant)"
+                },
+                {
+                  "disabled": false,
+                  "key": "updated-max",
+                  "value": "<date>",
+                  "description": "Maximum update date (RFC 3339 instant)"
+                },
+                {
+                  "disabled": false,
+                  "key": "updated-min",
+                  "value": "<date>",
+                  "description": "Minimum update date (RFC 3339 instant)"
+                },
+                {
+                  "disabled": false,
+                  "key": "max-results",
+                  "value": "<long>",
+                  "description": "Maximum number of results to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "start-index",
+                  "value": "<long>",
+                  "description": "Index of first result (1-indexed)"
+                },
+                {
+                  "disabled": false,
+                  "key": "depth",
+                  "value": "<long>",
+                  "description": "Response depth control"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "bulkId",
+                  "description": "(Required) Unique identifier for the Bulk transfer"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/atom+xml"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f8ec0bad-277e-43be-9ebf-d9fcde67f590",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "espi",
+                    "1_1",
+                    "resource",
+                    "Batch",
+                    "Bulk",
+                    ":bulkId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "published-max",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "published-min",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "updated-max",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "updated-min",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "max-results",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "start-index",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "depth",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bulkId",
+                      "description": "(Required) Unique identifier for the Bulk transfer"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/atom+xml"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/atom+xml"
+                }
+              ],
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<feed xmlns=\"http://www.w3.org/2005/Atom\">\n  <id>(string)</id>\n  <title>(string)</title>\n  <updated>(string)</updated>\n  <link>\n    <href>(string)</href>\n    <rel>(string)</rel>\n    <type>(string)</type>\n  </link>\n  <link>\n    <href>(string)</href>\n    <rel>(string)</rel>\n    <type>(string)</type>\n  </link>\n  <entry>\n    <id>(string)</id>\n    <title>(string)</title>\n    <published>(string)</published>\n    <updated>(string)</updated>\n    <link>\n      <href>(string)</href>\n      <rel>(string)</rel>\n      <type>(string)</type>\n    </link>\n    <link>\n      <href>(string)</href>\n      <rel>(string)</rel>\n      <type>(string)</type>\n    </link>\n    <content xmlns=\"http://www.w3.org/2005/Atom\">\n      <type>(string)</type>\n    </content>\n  </entry>\n  <entry>\n    <id>(string)</id>\n    <title>(string)</title>\n    <published>(string)</published>\n    <updated>(string)</updated>\n    <link>\n      <href>(string)</href>\n      <rel>(string)</rel>\n      <type>(string)</type>\n    </link>\n    <link>\n      <href>(string)</href>\n      <rel>(string)</rel>\n      <type>(string)</type>\n    </link>\n    <content xmlns=\"http://www.w3.org/2005/Atom\">\n      <type>(string)</type>\n    </content>\n  </entry>\n</feed>",
+              "cookie": [],
+              "_postman_previewlanguage": "xml"
+            },
+            {
+              "id": "411dae55-c166-4b2d-bbc3-d66b07aff661",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "espi",
+                    "1_1",
+                    "resource",
+                    "Batch",
+                    "Bulk",
+                    ":bulkId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "published-max",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "published-min",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "updated-max",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "updated-min",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "max-results",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "start-index",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "depth",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bulkId",
+                      "description": "(Required) Unique identifier for the Bulk transfer"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/atom+xml"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/atom+xml"
+                }
+              ],
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<feed xmlns=\"http://www.w3.org/2005/Atom\">\n  <id>(string)</id>\n  <title>(string)</title>\n  <updated>(string)</updated>\n  <link>\n    <href>(string)</href>\n    <rel>(string)</rel>\n    <type>(string)</type>\n  </link>\n  <link>\n    <href>(string)</href>\n    <rel>(string)</rel>\n    <type>(string)</type>\n  </link>\n  <entry>\n    <id>(string)</id>\n    <title>(string)</title>\n    <published>(string)</published>\n    <updated>(string)</updated>\n    <link>\n      <href>(string)</href>\n      <rel>(string)</rel>\n      <type>(string)</type>\n    </link>\n    <link>\n      <href>(string)</href>\n      <rel>(string)</rel>\n      <type>(string)</type>\n    </link>\n    <content xmlns=\"http://www.w3.org/2005/Atom\">\n      <type>(string)</type>\n    </content>\n  </entry>\n  <entry>\n    <id>(string)</id>\n    <title>(string)</title>\n    <published>(string)</published>\n    <updated>(string)</updated>\n    <link>\n      <href>(string)</href>\n      <rel>(string)</rel>\n      <type>(string)</type>\n    </link>\n    <link>\n      <href>(string)</href>\n      <rel>(string)</rel>\n      <type>(string)</type>\n    </link>\n    <content xmlns=\"http://www.w3.org/2005/Atom\">\n      <type>(string)</type>\n    </content>\n  </entry>\n</feed>",
+              "cookie": [],
+              "_postman_previewlanguage": "xml"
+            },
+            {
+              "id": "b0de81b8-4993-4215-9661-91f980a07d2c",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "espi",
+                    "1_1",
+                    "resource",
+                    "Batch",
+                    "Bulk",
+                    ":bulkId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "published-max",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "published-min",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "updated-max",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "updated-min",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "max-results",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "start-index",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "depth",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bulkId",
+                      "description": "(Required) Unique identifier for the Bulk transfer"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "fcf846c0-ea42-4385-b7b1-5cdd5df7c4b3",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "espi",
+                    "1_1",
+                    "resource",
+                    "Batch",
+                    "Bulk",
+                    ":bulkId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "published-max",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "published-min",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "updated-max",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "updated-min",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "max-results",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "start-index",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "depth",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bulkId",
+                      "description": "(Required) Unique identifier for the Bulk transfer"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "0abc182a-26f0-4da0-9e3c-08b42ab8d8c8",
+      "name": "UsagePoint",
+      "description": {
+        "content": "Usage Point endpoints",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "08e3cbe7-8e87-46ec-91f6-d3ed60d5bab7",
+          "name": "Retrieve all Usage Points [FB_33]",
+          "request": {
+            "name": "Retrieve all Usage Points [FB_33]",
+            "description": {},
+            "url": {
+              "path": [
+                "espi",
+                "1_1",
+                "resource",
+                "UsagePoint"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "published-max",
+                  "value": "<date>",
+                  "description": "Maximum publication date (RFC 3339 instant)"
+                },
+                {
+                  "disabled": false,
+                  "key": "published-min",
+                  "value": "<date>",
+                  "description": "Minimum publication date (RFC 3339 instant)"
+                },
+                {
+                  "disabled": false,
+                  "key": "updated-max",
+                  "value": "<date>",
+                  "description": "Maximum update date (RFC 3339 instant)"
+                },
+                {
+                  "disabled": false,
+                  "key": "updated-min",
+                  "value": "<date>",
+                  "description": "Minimum update date (RFC 3339 instant)"
+                },
+                {
+                  "disabled": false,
+                  "key": "max-results",
+                  "value": "<long>",
+                  "description": "Maximum number of results to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "start-index",
+                  "value": "<long>",
+                  "description": "Index of first result (1-indexed)"
+                },
+                {
+                  "disabled": false,
+                  "key": "depth",
+                  "value": "<long>",
+                  "description": "Response depth control"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/atom+xml"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "508b2c9e-d292-430c-a8ac-ba4cd1b705b4",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "espi",
+                    "1_1",
+                    "resource",
+                    "UsagePoint"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "published-max",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "published-min",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "updated-max",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "updated-min",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "max-results",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "start-index",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "depth",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/atom+xml"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/atom+xml"
+                }
+              ],
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<feed xmlns=\"http://www.w3.org/2005/Atom\">\n  <id>(string)</id>\n  <title>(string)</title>\n  <updated>(string)</updated>\n  <link>\n    <href>(string)</href>\n    <rel>(string)</rel>\n    <type>(string)</type>\n  </link>\n  <link>\n    <href>(string)</href>\n    <rel>(string)</rel>\n    <type>(string)</type>\n  </link>\n  <entry>\n    <id>(string)</id>\n    <title>(string)</title>\n    <published>(string)</published>\n    <updated>(string)</updated>\n    <link>\n      <href>(string)</href>\n      <rel>(string)</rel>\n      <type>(string)</type>\n    </link>\n    <link>\n      <href>(string)</href>\n      <rel>(string)</rel>\n      <type>(string)</type>\n    </link>\n    <content xmlns=\"http://www.w3.org/2005/Atom\">\n      <type>(string)</type>\n    </content>\n  </entry>\n  <entry>\n    <id>(string)</id>\n    <title>(string)</title>\n    <published>(string)</published>\n    <updated>(string)</updated>\n    <link>\n      <href>(string)</href>\n      <rel>(string)</rel>\n      <type>(string)</type>\n    </link>\n    <link>\n      <href>(string)</href>\n      <rel>(string)</rel>\n      <type>(string)</type>\n    </link>\n    <content xmlns=\"http://www.w3.org/2005/Atom\">\n      <type>(string)</type>\n    </content>\n  </entry>\n</feed>",
+              "cookie": [],
+              "_postman_previewlanguage": "xml"
+            },
+            {
+              "id": "e1c0593b-6192-4c4c-9aba-0fc3f3814451",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "espi",
+                    "1_1",
+                    "resource",
+                    "UsagePoint"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "published-max",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "published-min",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "updated-max",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "updated-min",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "max-results",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "start-index",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "depth",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/atom+xml"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/atom+xml"
+                }
+              ],
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<feed xmlns=\"http://www.w3.org/2005/Atom\">\n  <id>(string)</id>\n  <title>(string)</title>\n  <updated>(string)</updated>\n  <link>\n    <href>(string)</href>\n    <rel>(string)</rel>\n    <type>(string)</type>\n  </link>\n  <link>\n    <href>(string)</href>\n    <rel>(string)</rel>\n    <type>(string)</type>\n  </link>\n  <entry>\n    <id>(string)</id>\n    <title>(string)</title>\n    <published>(string)</published>\n    <updated>(string)</updated>\n    <link>\n      <href>(string)</href>\n      <rel>(string)</rel>\n      <type>(string)</type>\n    </link>\n    <link>\n      <href>(string)</href>\n      <rel>(string)</rel>\n      <type>(string)</type>\n    </link>\n    <content xmlns=\"http://www.w3.org/2005/Atom\">\n      <type>(string)</type>\n    </content>\n  </entry>\n  <entry>\n    <id>(string)</id>\n    <title>(string)</title>\n    <published>(string)</published>\n    <updated>(string)</updated>\n    <link>\n      <href>(string)</href>\n      <rel>(string)</rel>\n      <type>(string)</type>\n    </link>\n    <link>\n      <href>(string)</href>\n      <rel>(string)</rel>\n      <type>(string)</type>\n    </link>\n    <content xmlns=\"http://www.w3.org/2005/Atom\">\n      <type>(string)</type>\n    </content>\n  </entry>\n</feed>",
+              "cookie": [],
+              "_postman_previewlanguage": "xml"
+            },
+            {
+              "id": "dd16a605-abdf-4bd1-85ae-e38b09f1d500",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "espi",
+                    "1_1",
+                    "resource",
+                    "UsagePoint"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "published-max",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "published-min",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "updated-max",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "updated-min",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "max-results",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "start-index",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "depth",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4676935c-e97e-49b4-8a6e-f8d674747be6",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "espi",
+                    "1_1",
+                    "resource",
+                    "UsagePoint"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "published-max",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "published-min",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "updated-max",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "updated-min",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "max-results",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "start-index",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "depth",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f7c1808e-2f16-406b-b705-e6f58b4bd2a8",
+          "name": "Retrieve Usage Point by Id [FB_32]",
+          "request": {
+            "name": "Retrieve Usage Point by Id [FB_32]",
+            "description": {},
+            "url": {
+              "path": [
+                "espi",
+                "1_1",
+                "resource",
+                "UsagePoint",
+                ":usagePointId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "published-max",
+                  "value": "<date>",
+                  "description": "Maximum publication date (RFC 3339 instant)"
+                },
+                {
+                  "disabled": false,
+                  "key": "published-min",
+                  "value": "<date>",
+                  "description": "Minimum publication date (RFC 3339 instant)"
+                },
+                {
+                  "disabled": false,
+                  "key": "updated-max",
+                  "value": "<date>",
+                  "description": "Maximum update date (RFC 3339 instant)"
+                },
+                {
+                  "disabled": false,
+                  "key": "updated-min",
+                  "value": "<date>",
+                  "description": "Minimum update date (RFC 3339 instant)"
+                },
+                {
+                  "disabled": false,
+                  "key": "max-results",
+                  "value": "<long>",
+                  "description": "Maximum number of results to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "start-index",
+                  "value": "<long>",
+                  "description": "Index of first result (1-indexed)"
+                },
+                {
+                  "disabled": false,
+                  "key": "depth",
+                  "value": "<long>",
+                  "description": "Response depth control"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "usagePointId",
+                  "description": "(Required) Unique identifier for the UsagePoint resource"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/atom+xml"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "54afea81-923f-4dd8-85e0-da4b4c12ceb3",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "espi",
+                    "1_1",
+                    "resource",
+                    "UsagePoint",
+                    ":usagePointId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "published-max",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "published-min",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "updated-max",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "updated-min",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "max-results",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "start-index",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "depth",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "usagePointId",
+                      "description": "(Required) Unique identifier for the UsagePoint resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/atom+xml"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/atom+xml"
+                }
+              ],
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<UsagePoint xmlns=\"http://naesb.org/espi\">\n  <roleFlags>(string)</roleFlags>\n  <ServiceCategory>(integer)</ServiceCategory>\n  <status>(integer)</status>\n  <isSdp>(boolean)</isSdp>\n  <isVirtual>(boolean)</isVirtual>\n  <connectionState>(string)</connectionState>\n</UsagePoint>",
+              "cookie": [],
+              "_postman_previewlanguage": "xml"
+            },
+            {
+              "id": "9dcbbc7a-c114-472b-ae92-8e95a515de82",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "espi",
+                    "1_1",
+                    "resource",
+                    "UsagePoint",
+                    ":usagePointId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "published-max",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "published-min",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "updated-max",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "updated-min",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "max-results",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "start-index",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "depth",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "usagePointId",
+                      "description": "(Required) Unique identifier for the UsagePoint resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/atom+xml"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/atom+xml"
+                }
+              ],
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<UsagePoint xmlns=\"http://naesb.org/espi\">\n  <roleFlags>(string)</roleFlags>\n  <ServiceCategory>(integer)</ServiceCategory>\n  <status>(integer)</status>\n  <isSdp>(boolean)</isSdp>\n  <isVirtual>(boolean)</isVirtual>\n  <connectionState>(string)</connectionState>\n</UsagePoint>",
+              "cookie": [],
+              "_postman_previewlanguage": "xml"
+            },
+            {
+              "id": "5a849c48-3a54-4889-8094-3af2d877952d",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "espi",
+                    "1_1",
+                    "resource",
+                    "UsagePoint",
+                    ":usagePointId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "published-max",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "published-min",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "updated-max",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "updated-min",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "max-results",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "start-index",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "depth",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "usagePointId",
+                      "description": "(Required) Unique identifier for the UsagePoint resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ca7192eb-cc44-47f3-b17e-195102bc6167",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "espi",
+                    "1_1",
+                    "resource",
+                    "UsagePoint",
+                    ":usagePointId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "published-max",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "published-min",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "updated-max",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "updated-min",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "max-results",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "start-index",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "depth",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "usagePointId",
+                      "description": "(Required) Unique identifier for the UsagePoint resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://sandbox.greenbuttonalliance.org:8443/DataCustodian",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "accessTokenUrl",
+        "value": "https://sandbox.greenbuttonalliance.org:8443/oauth/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://sandbox.greenbuttonalliance.org:8443/oauth/authorize"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "0d96f143-694d-4173-9e59-d70f19317f8b",
+    "name": "Green Button API Documentation",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Green Button API - ESPI 4.0\n\nContact Support:\n Name: Green Button Alliance",
+      "type": "text/plain"
+    }
+  }
+}
