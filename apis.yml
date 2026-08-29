@@ -20,6 +20,18 @@ description: Toronto Hydro is the municipally owned local electricity distributi
   companies that apply, pass a connectivity test and sign the third-party terms; market
   and grid data are not published openly at all. Mandated, implemented, and completely
   gated.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 image: https://www.torontohydro.com/favicon.ico
 tags:
 - Energy
