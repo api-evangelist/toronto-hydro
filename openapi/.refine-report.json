@@ -1,0 +1,26 @@
+{
+  "provider": "toronto-hydro",
+  "sources": [
+    "_original/toronto-hydro-green-button-espi-openapi.yml"
+  ],
+  "outputs": [
+    "toronto-hydro-applicationinformation-api-openapi.yml",
+    "toronto-hydro-authorization-api-openapi.yml",
+    "toronto-hydro-batch-api-openapi.yml",
+    "toronto-hydro-usagepoint-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "toronto-hydro-green-button-espi-openapi.yml: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "toronto-hydro-applicationinformation-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "toronto-hydro-authorization-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "toronto-hydro-batch-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "toronto-hydro-usagepoint-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
+}
