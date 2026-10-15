@@ -1,20 +1,34 @@
-generated: '2026-07-27'
-method: derived
-source: openapi/toronto-hydro-green-button-espi-openapi.yml
-note: >-
-  Zero scopes is the real, expected result. The oauth2 scheme in the Green Button Alliance
-  source specification declares an EMPTY scopes object, and Toronto Hydro publishes no
-  scopes or permissions reference page anywhere — no scope names were invented. The
-  authorization and token URLs below are the GBA sandbox's, not Toronto Hydro's; Toronto
-  Hydro publishes no OAuth endpoints. In the Green Button model the effective grant is
-  expressed through the customer's authorization at consent time and carried on the
-  Authorization resource (fields scope, grant_type, expires_at, status) rather than
-  through a published scope catalogue. Toronto Hydro describes the data classes covered —
-  consumption details, billing information and customer information — but does not
-  express them as scopes.
+generated: '2026-10-14'
+method: none
+source: openapi/toronto-hydro-applicationinformation-api-openapi.yml, openapi/toronto-hydro-authorization-api-openapi.yml,
+  openapi/toronto-hydro-batch-api-openapi.yml, openapi/toronto-hydro-usagepoint-api-openapi.yml
 schemes:
 - name: oauth2
-  source: openapi/toronto-hydro-green-button-espi-openapi.yml
+  source: openapi/toronto-hydro-applicationinformation-api-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://sandbox.greenbuttonalliance.org:8443/oauth/authorize
+    tokenUrl: https://sandbox.greenbuttonalliance.org:8443/oauth/token
+  - flow: clientCredentials
+    tokenUrl: https://sandbox.greenbuttonalliance.org:8443/oauth/token
+- name: oauth2
+  source: openapi/toronto-hydro-authorization-api-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://sandbox.greenbuttonalliance.org:8443/oauth/authorize
+    tokenUrl: https://sandbox.greenbuttonalliance.org:8443/oauth/token
+  - flow: clientCredentials
+    tokenUrl: https://sandbox.greenbuttonalliance.org:8443/oauth/token
+- name: oauth2
+  source: openapi/toronto-hydro-batch-api-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://sandbox.greenbuttonalliance.org:8443/oauth/authorize
+    tokenUrl: https://sandbox.greenbuttonalliance.org:8443/oauth/token
+  - flow: clientCredentials
+    tokenUrl: https://sandbox.greenbuttonalliance.org:8443/oauth/token
+- name: oauth2
+  source: openapi/toronto-hydro-usagepoint-api-openapi.yml
   flows:
   - flow: authorizationCode
     authorizationUrl: https://sandbox.greenbuttonalliance.org:8443/oauth/authorize
@@ -22,3 +36,5 @@ schemes:
   - flow: clientCredentials
     tokenUrl: https://sandbox.greenbuttonalliance.org:8443/oauth/token
 scopes: []
+note: The OAuth2 security scheme(s) in the OpenAPI declare no scopes, and no security requirement
+  references one.
